@@ -1,0 +1,36 @@
+get_json_value() {
+    local json="$1"
+    local key="$2"
+    echo "$json" | awk -F'[{},:]' '{
+        for (i=2; i<=NF; i++) {
+                print $(i)
+        }
+    }'  | sed 's/^"// ; s/"$//'
+
+}
+
+json='{"abbreviation":"BST","day_of_year":192,"dst_offset":3600,"raw_offset":0,"timezone":"Europe/London","unixtime":1720627655,"utc_offset":"+01:00","week_number":28}'
+
+data_string=$(get_json_value "$json")
+#echo "$data_string"
+
+# Reconstruct associative array
+declare -A my_array
+
+index=0
+while read -r line; do
+  if [[ $((index % 2)) -eq 0 ]]; then
+    # Even line (key)
+    key="$line"
+  else
+    # Odd line (value)
+    my_array["$key"]="$line"
+  fi
+  ((index++))
+done <<< "$data_string"
+
+# Access elements of the associative array
+echo "Name: ${my_array[timezone]}"
+echo "Age: ${my_array[utc_offset]}"
+
+

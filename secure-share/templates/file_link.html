@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Your File Share Link</h2>
+    <p>Share this link to download the file: <a href="{{ url_for('get_send', send_id=send_id, _external=True) }}">Download File</a></p>
+    <p>View statistics: <a href="{{ url_for('get_stats', send_id=send_id, _external=True) }}">Stats</a></p>
+</body>
+</html>
