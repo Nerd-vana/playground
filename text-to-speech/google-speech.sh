@@ -7,10 +7,9 @@ fi
 
 # Your text, voice, and language settings
 #text="$1"
-text="Can you do this?"
+text="This is an {eimportant} notice announced on {d01-02-2024} by {cwho}. {b500}{eYes}"
 voice_name=$TTS_VOICE
 language_code=$TTS_LANG
-
 
 get-jsonToken() {
 
@@ -44,11 +43,31 @@ get-jsonToken() {
 
 }
 
+clean_text() {
+    local input="$1"
+    local output=""
+    
+    while [[ "$input" =~ \{([bcde])([^}]*)\} ]]; do
+        output+="${input%%\{*}"
+        local tag="${BASH_REMATCH[1]}"
+        local content="${BASH_REMATCH[2]}"
+        
+        case "$tag" in
+            b) ;;  # Do nothing for {b} tags
+            *) output+="$content" ;;  # Add content for other tags
+        esac
+        
+        input="${input#*\}}"
+    done
+    
+    output+="$input"
+    echo "$output"
+}
+
 # Path to your service account JSON file
 SERVICE_ACCOUNT_FILE="tts_secret.json"
 
 ACCESS_TOKEN=$(get-jsonToken $SERVICE_ACCOUNT_FILE)
-
 
 capitalize_and_clean() {
     local input_string="$1"
@@ -64,33 +83,77 @@ capitalize_and_clean() {
 
 
 
-identifier=$(capitalize_and_clean "$text")
+cleaned_text=$(clean_text "$text")
+
+identifier=$(capitalize_and_clean "$cleaned_text")
 
 echo "$voice_name"
 
 temp=$(mktemp)
 
+
+
 now=$(date +"%H%M%S")
 #identifier=$(echo $text | awk -F'[, .?]' '{print $1}')
 output="${now}-${identifier}.mp3"
 
-# Make the API request
-curl -X POST \
-  -H "Authorization: Bearer $ACCESS_TOKEN" \
-  -H "Content-Type: application/json; charset=utf-8" \
-  -d "{
-    \"input\": {
-      \"text\": \"$text\"
+
+convert_to_ssml() {
+    local input="$1"
+    local output=""
+    
+    while [[ "$input" =~ \{([bcde])([^}]*)\} ]]; do
+        output+="${input%%\{*}"
+        local tag="${BASH_REMATCH[1]}"
+        local content="${BASH_REMATCH[2]}"
+        
+        case "$tag" in
+            b) output+="<break time=\"${content}ms\"/>" ;;
+            c) output+="<say-as interpret-as=\"characters\">$content</say-as>" ;;
+            d) output+="<say-as interpret-as=\"date\" format=\"mdy\">$content</say-as>" ;;
+            e) output+="<emphasis>$content</emphasis>" ;;
+        esac
+        
+        input="${input#*\}}"
+    done
+    
+    output+="$input"
+    echo "$output"
+}
+
+
+#ssml_text=$(convert_to_ssml "$text" | jq -Rs .)
+ssml_text=$(convert_to_ssml "$text" )
+#ssml_text=$(convert_to_ssml "This is a {b500} test {eimportant} notice example. {cthis is a test} The date is {d01-02-2020}.")
+
+ssml_content=$(convert_to_ssml "$text")
+ssml_json=$(jq -n \
+  --arg ssml "$ssml_content" \
+  --arg lang "$language_code" \
+  --arg voice "$voice_name" \
+  '{
+    "input": {
+      "ssml": "<speak>\($ssml)</speak>"
     },
-    \"voice\": {
-      \"languageCode\": \"$language_code\",
-      \"name\": \"$voice_name\"
+    "voice": {
+      "languageCode": $lang,
+      "name": $voice
     },
-    \"audioConfig\": {
-      \"audioEncoding\": \"MP3\"
+    "audioConfig": {
+      "audioEncoding": "MP3"
     }
-  }" \
-  "https://texttospeech.googleapis.com/v1/text:synthesize" > $temp 2>/dev/null
+  }')
+
+echo "$ssml_content"
+echo "$ssml_json"
+
+
+curl -X POST \
+ -H "Authorization: Bearer $ACCESS_TOKEN" \
+ -H "Content-Type: application/json; charset=utf-8" \
+ -d "$ssml_json" \
+"https://texttospeech.googleapis.com/v1/text:synthesize" > $temp 2>/dev/null
+
 
 # Check if the output contains an error
 if grep -q "error" $temp; then
