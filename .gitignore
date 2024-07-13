@@ -1,6 +1,6 @@
 venv
 *secret.json
+*token.json
 *.mp3
 *.ogg
 *.wav
-*token.json
