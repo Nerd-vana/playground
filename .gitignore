@@ -1,2 +1,6 @@
 venv
-tts_secret.json
+*secret.json
+*.mp3
+*.ogg
+*.wav
+*token.json

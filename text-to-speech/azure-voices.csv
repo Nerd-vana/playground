@@ -1,0 +1,513 @@
+Afrikaans (South Africa),af-ZA-AdriNeural,Female,af-ZA
+Afrikaans (South Africa),af-ZA-WillemNeural,Male,af-ZA
+Amharic (Ethiopia),am-ET-MekdesNeural,Female,am-ET
+Amharic (Ethiopia),am-ET-AmehaNeural,Male,am-ET
+Arabic (United Arab Emirates),ar-AE-FatimaNeural,Female,ar-AE
+Arabic (United Arab Emirates),ar-AE-HamdanNeural,Male,ar-AE
+Arabic (Bahrain),ar-BH-LailaNeural,Female,ar-BH
+Arabic (Bahrain),ar-BH-AliNeural,Male,ar-BH
+Arabic (Algeria),ar-DZ-AminaNeural,Female,ar-DZ
+Arabic (Algeria),ar-DZ-IsmaelNeural,Male,ar-DZ
+Arabic (Egypt),ar-EG-SalmaNeural,Female,ar-EG
+Arabic (Egypt),ar-EG-ShakirNeural,Male,ar-EG
+Arabic (Iraq),ar-IQ-RanaNeural,Female,ar-IQ
+Arabic (Iraq),ar-IQ-BasselNeural,Male,ar-IQ
+Arabic (Jordan),ar-JO-SanaNeural,Female,ar-JO
+Arabic (Jordan),ar-JO-TaimNeural,Male,ar-JO
+Arabic (Kuwait),ar-KW-NouraNeural,Female,ar-KW
+Arabic (Kuwait),ar-KW-FahedNeural,Male,ar-KW
+Arabic (Lebanon),ar-LB-LaylaNeural,Female,ar-LB
+Arabic (Lebanon),ar-LB-RamiNeural,Male,ar-LB
+Arabic (Libya),ar-LY-ImanNeural,Female,ar-LY
+Arabic (Libya),ar-LY-OmarNeural,Male,ar-LY
+Arabic (Morocco),ar-MA-MounaNeural,Female,ar-MA
+Arabic (Morocco),ar-MA-JamalNeural,Male,ar-MA
+Arabic (Oman),ar-OM-AyshaNeural,Female,ar-OM
+Arabic (Oman),ar-OM-AbdullahNeural,Male,ar-OM
+Arabic (Qatar),ar-QA-AmalNeural,Female,ar-QA
+Arabic (Qatar),ar-QA-MoazNeural,Male,ar-QA
+Arabic (Saudi Arabia),ar-SA-ZariyahNeural,Female,ar-SA
+Arabic (Saudi Arabia),ar-SA-HamedNeural,Male,ar-SA
+Arabic (Syria),ar-SY-AmanyNeural,Female,ar-SY
+Arabic (Syria),ar-SY-LaithNeural,Male,ar-SY
+Arabic (Tunisia),ar-TN-ReemNeural,Female,ar-TN
+Arabic (Tunisia),ar-TN-HediNeural,Male,ar-TN
+Arabic (Yemen),ar-YE-MaryamNeural,Female,ar-YE
+Arabic (Yemen),ar-YE-SalehNeural,Male,ar-YE
+Assamese (India),as-IN-YashicaNeural,Female,as-IN
+Assamese (India),as-IN-PriyomNeural,Male,as-IN
+Azerbaijani (Latin Azerbaijan),az-AZ-BanuNeural,Female,az-AZ
+Azerbaijani (Latin Azerbaijan),az-AZ-BabekNeural,Male,az-AZ
+Bulgarian (Bulgaria),bg-BG-KalinaNeural,Female,bg-BG
+Bulgarian (Bulgaria),bg-BG-BorislavNeural,Male,bg-BG
+Bangla (Bangladesh),bn-BD-NabanitaNeural,Female,bn-BD
+Bangla (Bangladesh),bn-BD-PradeepNeural,Male,bn-BD
+Bengali (India),bn-IN-TanishaaNeural,Female,bn-IN
+Bengali (India),bn-IN-BashkarNeural,Male,bn-IN
+Bosnian (Bosnia and Herzegovina),bs-BA-VesnaNeural,Female,bs-BA
+Bosnian (Bosnia and Herzegovina),bs-BA-GoranNeural,Male,bs-BA
+Catalan,ca-ES-JoanaNeural,Female,ca-ES
+Catalan,ca-ES-EnricNeural,Male,ca-ES
+Catalan,ca-ES-AlbaNeural,Female,ca-ES
+Czech (Czechia),cs-CZ-VlastaNeural,Female,cs-CZ
+Czech (Czechia),cs-CZ-AntoninNeural,Male,cs-CZ
+Welsh (United Kingdom),cy-GB-NiaNeural,Female,cy-GB
+Welsh (United Kingdom),cy-GB-AledNeural,Male,cy-GB
+Danish (Denmark),da-DK-ChristelNeural,Female,da-DK
+Danish (Denmark),da-DK-JeppeNeural,Male,da-DK
+German (Austria),de-AT-IngridNeural,Female,de-AT
+German (Austria),de-AT-JonasNeural,Male,de-AT
+German (Switzerland),de-CH-LeniNeural,Female,de-CH
+German (Switzerland),de-CH-JanNeural,Male,de-CH
+German (Germany),de-DE-KatjaNeural,Female,de-DE
+German (Germany),de-DE-ConradNeural,Male,de-DE
+German (Germany),de-DE-AmalaNeural,Female,de-DE
+German (Germany),de-DE-BerndNeural,Male,de-DE
+German (Germany),de-DE-ChristophNeural,Male,de-DE
+German (Germany),de-DE-ElkeNeural,Female,de-DE
+German (Germany),de-DE-GiselaNeural,Female,de-DE
+German (Germany),de-DE-KasperNeural,Male,de-DE
+German (Germany),de-DE-KillianNeural,Male,de-DE
+German (Germany),de-DE-KlarissaNeural,Female,de-DE
+German (Germany),de-DE-KlausNeural,Male,de-DE
+German (Germany),de-DE-LouisaNeural,Female,de-DE
+German (Germany),de-DE-MajaNeural,Female,de-DE
+German (Germany),de-DE-RalfNeural,Male,de-DE
+German (Germany),de-DE-TanjaNeural,Female,de-DE
+German (Germany),de-DE-FlorianMultilingualNeural,Male,de-DE
+German (Germany),de-DE-SeraphinaMultilingualNeural,Female,de-DE
+Greek (Greece),el-GR-AthinaNeural,Female,el-GR
+Greek (Greece),el-GR-NestorasNeural,Male,el-GR
+English (Australia),en-AU-NatashaNeural,Female,en-AU
+English (Australia),en-AU-WilliamNeural,Male,en-AU
+English (Australia),en-AU-AnnetteNeural,Female,en-AU
+English (Australia),en-AU-CarlyNeural,Female,en-AU
+English (Australia),en-AU-DarrenNeural,Male,en-AU
+English (Australia),en-AU-DuncanNeural,Male,en-AU
+English (Australia),en-AU-ElsieNeural,Female,en-AU
+English (Australia),en-AU-FreyaNeural,Female,en-AU
+English (Australia),en-AU-JoanneNeural,Female,en-AU
+English (Australia),en-AU-KenNeural,Male,en-AU
+English (Australia),en-AU-KimNeural,Female,en-AU
+English (Australia),en-AU-NeilNeural,Male,en-AU
+English (Australia),en-AU-TimNeural,Male,en-AU
+English (Australia),en-AU-TinaNeural,Female,en-AU
+English (Canada),en-CA-ClaraNeural,Female,en-CA
+English (Canada),en-CA-LiamNeural,Male,en-CA
+English (United Kingdom),en-GB-SoniaNeural,Female,en-GB
+English (United Kingdom),en-GB-RyanNeural,Male,en-GB
+English (United Kingdom),en-GB-LibbyNeural,Female,en-GB
+English (United Kingdom),en-GB-AbbiNeural,Female,en-GB
+English (United Kingdom),en-GB-AdaMultilingualNeural,Female,en-GB
+English (United Kingdom),en-GB-AlfieNeural,Male,en-GB
+English (United Kingdom),en-GB-BellaNeural,Female,en-GB
+English (United Kingdom),en-GB-ElliotNeural,Male,en-GB
+English (United Kingdom),en-GB-EthanNeural,Male,en-GB
+English (United Kingdom),en-GB-HollieNeural,Female,en-GB
+English (United Kingdom),en-GB-MaisieNeural,Child,en-GB
+English (United Kingdom),en-GB-NoahNeural,Male,en-GB
+English (United Kingdom),en-GB-OliverNeural,Male,en-GB
+English (United Kingdom),en-GB-OliviaNeural,Female,en-GB
+English (United Kingdom),en-GB-ThomasNeural,Male,en-GB
+English (United Kingdom),en-GB-OllieMultilingualNeural,Male,en-GB
+English (Hong Kong SAR),en-HK-YanNeural,Female,en-HK
+English (Hong Kong SAR),en-HK-SamNeural,Male,en-HK
+English (Ireland),en-IE-EmilyNeural,Female,en-IE
+English (Ireland),en-IE-ConnorNeural,Male,en-IE
+English (India),en-IN-NeerjaNeural,Female,en-IN
+English (India),en-IN-PrabhatNeural,Male,en-IN
+English (Kenya),en-KE-AsiliaNeural,Female,en-KE
+English (Kenya),en-KE-ChilembaNeural,Male,en-KE
+English (Nigeria),en-NG-EzinneNeural,Female,en-NG
+English (Nigeria),en-NG-AbeoNeural,Male,en-NG
+English (New Zealand),en-NZ-MollyNeural,Female,en-NZ
+English (New Zealand),en-NZ-MitchellNeural,Male,en-NZ
+English (Philippines),en-PH-RosaNeural,Female,en-PH
+English (Philippines),en-PH-JamesNeural,Male,en-PH
+English (Singapore),en-SG-LunaNeural,Female,en-SG
+English (Singapore),en-SG-WayneNeural,Male,en-SG
+English (Tanzania),en-TZ-ImaniNeural,Female,en-TZ
+English (Tanzania),en-TZ-ElimuNeural,Male,en-TZ
+English (United States),en-US-AvaNeural,Female,en-US
+English (United States),en-US-AndrewNeural,Male,en-US
+English (United States),en-US-EmmaNeural,Female,en-US
+English (United States),en-US-BrianNeural,Male,en-US
+English (United States),en-US-JennyNeural,Female,en-US
+English (United States),en-US-GuyNeural,Male,en-US
+English (United States),en-US-AriaNeural,Female,en-US
+English (United States),en-US-DavisNeural,Male,en-US
+English (United States),en-US-JaneNeural,Female,en-US
+English (United States),en-US-JasonNeural,Male,en-US
+English (United States),en-US-SaraNeural,Female,en-US
+English (United States),en-US-TonyNeural,Male,en-US
+English (United States),en-US-NancyNeural,Female,en-US
+English (United States),en-US-AmberNeural,Female,en-US
+English (United States),en-US-AnaNeural,Child,en-US
+English (United States),en-US-AshleyNeural,Female,en-US
+English (United States),en-US-BrandonNeural,Male,en-US
+English (United States),en-US-ChristopherNeural,Male,en-US
+English (United States),en-US-CoraNeural,Female,en-US
+English (United States),en-US-ElizabethNeural,Female,en-US
+English (United States),en-US-EricNeural,Male,en-US
+English (United States),en-US-JacobNeural,Male,en-US
+English (United States),en-US-JennyMultilingualNeural,Female,en-US
+English (United States),en-US-MichelleNeural,Female,en-US
+English (United States),en-US-MonicaNeural,Female,en-US
+English (United States),en-US-RogerNeural,Male,en-US
+English (United States),en-US-RyanMultilingualNeural,Male,en-US
+English (United States),en-US-SteffanNeural,Male,en-US
+English (United States),en-US-AIGenerateNeural,Male,en-US
+English (United States),en-US-AIGenerate2Neural,Female,en-US
+English (United States),en-US-AndrewMultilingualNeural,Male,en-US
+English (United States),en-US-AvaMultilingualNeural,Female,en-US
+English (United States),en-US-BlueNeural,Neutral,en-US
+English (United States),en-US-KaiNeural,Male,en-US
+English (United States),en-US-LunaNeural,Female,en-US
+English (United States),en-US-BrianMultilingualNeural,Male,en-US
+English (United States),en-US-EmmaMultilingualNeural,Female,en-US
+English (United States),en-US-AlloyMultilingualNeural,Male,en-US
+English (United States),en-US-EchoMultilingualNeural,Male,en-US
+English (United States),en-US-FableMultilingualNeural,Neutral,en-US
+English (United States),en-US-OnyxMultilingualNeural,Male,en-US
+English (United States),en-US-NovaMultilingualNeural,Female,en-US
+English (United States),en-US-ShimmerMultilingualNeural,Female,en-US
+English (United States),en-US-AlloyMultilingualNeuralHD,Male,en-US
+English (United States),en-US-EchoMultilingualNeuralHD,Male,en-US
+English (United States),en-US-FableMultilingualNeuralHD,Neutral,en-US
+English (United States),en-US-OnyxMultilingualNeuralHD,Male,en-US
+English (United States),en-US-NovaMultilingualNeuralHD,Female,en-US
+English (United States),en-US-ShimmerMultilingualNeuralHD,Female,en-US
+English (South Africa),en-ZA-LeahNeural,Female,en-ZA
+English (South Africa),en-ZA-LukeNeural,Male,en-ZA
+Spanish (Argentina),es-AR-ElenaNeural,Female,es-AR
+Spanish (Argentina),es-AR-TomasNeural,Male,es-AR
+Spanish (Bolivia),es-BO-SofiaNeural,Female,es-BO
+Spanish (Bolivia),es-BO-MarceloNeural,Male,es-BO
+Spanish (Chile),es-CL-CatalinaNeural,Female,es-CL
+Spanish (Chile),es-CL-LorenzoNeural,Male,es-CL
+Spanish (Colombia),es-CO-SalomeNeural,Female,es-CO
+Spanish (Colombia),es-CO-GonzaloNeural,Male,es-CO
+Spanish (Costa Rica),es-CR-MariaNeural,Female,es-CR
+Spanish (Costa Rica),es-CR-JuanNeural,Male,es-CR
+Spanish (Cuba),es-CU-BelkysNeural,Female,es-CU
+Spanish (Cuba),es-CU-ManuelNeural,Male,es-CU
+Spanish (Dominican Republic),es-DO-RamonaNeural,Female,es-DO
+Spanish (Dominican Republic),es-DO-EmilioNeural,Male,es-DO
+Spanish (Ecuador),es-EC-AndreaNeural,Female,es-EC
+Spanish (Ecuador),es-EC-LuisNeural,Male,es-EC
+Spanish (Spain),es-ES-ElviraNeural,Female,es-ES
+Spanish (Spain),es-ES-AlvaroNeural,Male,es-ES
+Spanish (Spain),es-ES-AbrilNeural,Female,es-ES
+Spanish (Spain),es-ES-ArnauNeural,Male,es-ES
+Spanish (Spain),es-ES-DarioNeural,Male,es-ES
+Spanish (Spain),es-ES-EliasNeural,Male,es-ES
+Spanish (Spain),es-ES-EstrellaNeural,Female,es-ES
+Spanish (Spain),es-ES-IreneNeural,Female,es-ES
+Spanish (Spain),es-ES-LaiaNeural,Female,es-ES
+Spanish (Spain),es-ES-LiaNeural,Female,es-ES
+Spanish (Spain),es-ES-NilNeural,Male,es-ES
+Spanish (Spain),es-ES-SaulNeural,Male,es-ES
+Spanish (Spain),es-ES-TeoNeural,Male,es-ES
+Spanish (Spain),es-ES-TrianaNeural,Female,es-ES
+Spanish (Spain),es-ES-VeraNeural,Female,es-ES
+Spanish (Spain),es-ES-XimenaNeural,Female,es-ES
+Spanish (Spain),es-ES-ArabellaMultilingualNeural,Female,es-ES
+Spanish (Spain),es-ES-IsidoraMultilingualNeural,Female,es-ES
+Spanish (Equatorial Guinea),es-GQ-TeresaNeural,Female,es-GQ
+Spanish (Equatorial Guinea),es-GQ-JavierNeural,Male,es-GQ
+Spanish (Guatemala),es-GT-MartaNeural,Female,es-GT
+Spanish (Guatemala),es-GT-AndresNeural,Male,es-GT
+Spanish (Honduras),es-HN-KarlaNeural,Female,es-HN
+Spanish (Honduras),es-HN-CarlosNeural,Male,es-HN
+Spanish (Mexico),es-MX-DaliaNeural,Female,es-MX
+Spanish (Mexico),es-MX-JorgeNeural,Male,es-MX
+Spanish (Mexico),es-MX-BeatrizNeural,Female,es-MX
+Spanish (Mexico),es-MX-CandelaNeural,Female,es-MX
+Spanish (Mexico),es-MX-CarlotaNeural,Female,es-MX
+Spanish (Mexico),es-MX-CecilioNeural,Male,es-MX
+Spanish (Mexico),es-MX-GerardoNeural,Male,es-MX
+Spanish (Mexico),es-MX-LarissaNeural,Female,es-MX
+Spanish (Mexico),es-MX-LibertoNeural,Male,es-MX
+Spanish (Mexico),es-MX-LucianoNeural,Male,es-MX
+Spanish (Mexico),es-MX-MarinaNeural,Female,es-MX
+Spanish (Mexico),es-MX-NuriaNeural,Female,es-MX
+Spanish (Mexico),es-MX-PelayoNeural,Male,es-MX
+Spanish (Mexico),es-MX-RenataNeural,Female,es-MX
+Spanish (Mexico),es-MX-YagoNeural,Male,es-MX
+Spanish (Nicaragua),es-NI-YolandaNeural,Female,es-NI
+Spanish (Nicaragua),es-NI-FedericoNeural,Male,es-NI
+Spanish (Panama),es-PA-MargaritaNeural,Female,es-PA
+Spanish (Panama),es-PA-RobertoNeural,Male,es-PA
+Spanish (Peru),es-PE-CamilaNeural,Female,es-PE
+Spanish (Peru),es-PE-AlexNeural,Male,es-PE
+Spanish (Puerto Rico),es-PR-KarinaNeural,Female,es-PR
+Spanish (Puerto Rico),es-PR-VictorNeural,Male,es-PR
+Spanish (Paraguay),es-PY-TaniaNeural,Female,es-PY
+Spanish (Paraguay),es-PY-MarioNeural,Male,es-PY
+Spanish (El Salvador),es-SV-LorenaNeural,Female,es-SV
+Spanish (El Salvador),es-SV-RodrigoNeural,Male,es-SV
+Spanish (United States),es-US-PalomaNeural,Female,es-US
+Spanish (United States),es-US-AlonsoNeural,Male,es-US
+Spanish (Uruguay),es-UY-ValentinaNeural,Female,es-UY
+Spanish (Uruguay),es-UY-MateoNeural,Male,es-UY
+Spanish (Venezuela),es-VE-PaolaNeural,Female,es-VE
+Spanish (Venezuela),es-VE-SebastianNeural,Male,es-VE
+Estonian (Estonia),et-EE-AnuNeural,Female,et-EE
+Estonian (Estonia),et-EE-KertNeural,Male,et-EE
+Basque,eu-ES-AinhoaNeural,Female,eu-ES
+Basque,eu-ES-AnderNeural,Male,eu-ES
+Persian (Iran),fa-IR-DilaraNeural,Female,fa-IR
+Persian (Iran),fa-IR-FaridNeural,Male,fa-IR
+Finnish (Finland),fi-FI-SelmaNeural,Female,fi-FI
+Finnish (Finland),fi-FI-HarriNeural,Male,fi-FI
+Finnish (Finland),fi-FI-NooraNeural,Female,fi-FI
+Filipino (Philippines),fil-PH-BlessicaNeural,Female,fil-PH
+Filipino (Philippines),fil-PH-AngeloNeural,Male,fil-PH
+French (Belgium),fr-BE-CharlineNeural,Female,fr-BE
+French (Belgium),fr-BE-GerardNeural,Male,fr-BE
+French (Canada),fr-CA-SylvieNeural,Female,fr-CA
+French (Canada),fr-CA-JeanNeural,Male,fr-CA
+French (Canada),fr-CA-AntoineNeural,Male,fr-CA
+French (Canada),fr-CA-ThierryNeural,Male,fr-CA
+French (Switzerland),fr-CH-ArianeNeural,Female,fr-CH
+French (Switzerland),fr-CH-FabriceNeural,Male,fr-CH
+French (France),fr-FR-DeniseNeural,Female,fr-FR
+French (France),fr-FR-HenriNeural,Male,fr-FR
+French (France),fr-FR-AlainNeural,Male,fr-FR
+French (France),fr-FR-BrigitteNeural,Female,fr-FR
+French (France),fr-FR-CelesteNeural,Female,fr-FR
+French (France),fr-FR-ClaudeNeural,Male,fr-FR
+French (France),fr-FR-CoralieNeural,Female,fr-FR
+French (France),fr-FR-EloiseNeural,Child,fr-FR
+French (France),fr-FR-JacquelineNeural,Female,fr-FR
+French (France),fr-FR-JeromeNeural,Male,fr-FR
+French (France),fr-FR-JosephineNeural,Female,fr-FR
+French (France),fr-FR-MauriceNeural,Male,fr-FR
+French (France),fr-FR-YvesNeural,Male,fr-FR
+French (France),fr-FR-YvetteNeural,Female,fr-FR
+French (France),fr-FR-RemyMultilingualNeural,Male,fr-FR
+French (France),fr-FR-VivienneMultilingualNeural,Female,fr-FR
+Irish (Ireland),ga-IE-OrlaNeural,Female,ga-IE
+Irish (Ireland),ga-IE-ColmNeural,Male,ga-IE
+Galician,gl-ES-SabelaNeural,Female,gl-ES
+Galician,gl-ES-RoiNeural,Male,gl-ES
+Gujarati (India),gu-IN-DhwaniNeural,Female,gu-IN
+Gujarati (India),gu-IN-NiranjanNeural,Male,gu-IN
+Hebrew (Israel),he-IL-HilaNeural,Female,he-IL
+Hebrew (Israel),he-IL-AvriNeural,Male,he-IL
+Hindi (India),hi-IN-SwaraNeural,Female,hi-IN
+Hindi (India),hi-IN-MadhurNeural,Male,hi-IN
+Croatian (Croatia),hr-HR-GabrijelaNeural,Female,hr-HR
+Croatian (Croatia),hr-HR-SreckoNeural,Male,hr-HR
+Hungarian (Hungary),hu-HU-NoemiNeural,Female,hu-HU
+Hungarian (Hungary),hu-HU-TamasNeural,Male,hu-HU
+Armenian (Armenia),hy-AM-AnahitNeural,Female,hy-AM
+Armenian (Armenia),hy-AM-HaykNeural,Male,hy-AM
+Indonesian (Indonesia),id-ID-GadisNeural,Female,id-ID
+Indonesian (Indonesia),id-ID-ArdiNeural,Male,id-ID
+Icelandic (Iceland),is-IS-GudrunNeural,Female,is-IS
+Icelandic (Iceland),is-IS-GunnarNeural,Male,is-IS
+Italian (Italy),it-IT-ElsaNeural,Female,it-IT
+Italian (Italy),it-IT-IsabellaNeural,Female,it-IT
+Italian (Italy),it-IT-DiegoNeural,Male,it-IT
+Italian (Italy),it-IT-BenignoNeural,Male,it-IT
+Italian (Italy),it-IT-CalimeroNeural,Male,it-IT
+Italian (Italy),it-IT-CataldoNeural,Male,it-IT
+Italian (Italy),it-IT-FabiolaNeural,Female,it-IT
+Italian (Italy),it-IT-FiammaNeural,Female,it-IT
+Italian (Italy),it-IT-GianniNeural,Male,it-IT
+Italian (Italy),it-IT-ImeldaNeural,Female,it-IT
+Italian (Italy),it-IT-IrmaNeural,Female,it-IT
+Italian (Italy),it-IT-LisandroNeural,Male,it-IT
+Italian (Italy),it-IT-PalmiraNeural,Female,it-IT
+Italian (Italy),it-IT-PierinaNeural,Female,it-IT
+Italian (Italy),it-IT-RinaldoNeural,Male,it-IT
+Italian (Italy),it-IT-AlessioMultilingualNeural,Male,it-IT
+Italian (Italy),it-IT-IsabellaMultilingualNeural,Female,it-IT
+Italian (Italy),it-IT-MarcelloMultilingualNeural,Male,it-IT
+Italian (Italy),it-IT-GiuseppeNeural,Male,it-IT
+Japanese (Japan),ja-JP-NanamiNeural,Female,ja-JP
+Japanese (Japan),ja-JP-KeitaNeural,Male,ja-JP
+Japanese (Japan),ja-JP-AoiNeural,Female,ja-JP
+Japanese (Japan),ja-JP-DaichiNeural,Male,ja-JP
+Japanese (Japan),ja-JP-MayuNeural,Female,ja-JP
+Japanese (Japan),ja-JP-NaokiNeural,Male,ja-JP
+Japanese (Japan),ja-JP-ShioriNeural,Female,ja-JP
+Japanese (Japan),ja-JP-MasaruMultilingualNeural,Male,ja-JP
+Javanese (Latin Indonesia),jv-ID-SitiNeural,Female,jv-ID
+Javanese (Latin Indonesia),jv-ID-DimasNeural,Male,jv-ID
+Georgian (Georgia),ka-GE-EkaNeural,Female,ka-GE
+Georgian (Georgia),ka-GE-GiorgiNeural,Male,ka-GE
+Kazakh (Kazakhstan),kk-KZ-AigulNeural,Female,kk-KZ
+Kazakh (Kazakhstan),kk-KZ-DauletNeural,Male,kk-KZ
+Khmer (Cambodia),km-KH-SreymomNeural,Female,km-KH
+Khmer (Cambodia),km-KH-PisethNeural,Male,km-KH
+Kannada (India),kn-IN-SapnaNeural,Female,kn-IN
+Kannada (India),kn-IN-GaganNeural,Male,kn-IN
+Korean (Korea),ko-KR-SunHiNeural,Female,ko-KR
+Korean (Korea),ko-KR-InJoonNeural,Male,ko-KR
+Korean (Korea),ko-KR-BongJinNeural,Male,ko-KR
+Korean (Korea),ko-KR-GookMinNeural,Male,ko-KR
+Korean (Korea),ko-KR-JiMinNeural,Female,ko-KR
+Korean (Korea),ko-KR-SeoHyeonNeural,Female,ko-KR
+Korean (Korea),ko-KR-SoonBokNeural,Female,ko-KR
+Korean (Korea),ko-KR-YuJinNeural,Female,ko-KR
+Korean (Korea),ko-KR-HyunsuNeural,Male,ko-KR
+Lao (Laos),lo-LA-KeomanyNeural,Female,lo-LA
+Lao (Laos),lo-LA-ChanthavongNeural,Male,lo-LA
+Lithuanian (Lithuania),lt-LT-OnaNeural,Female,lt-LT
+Lithuanian (Lithuania),lt-LT-LeonasNeural,Male,lt-LT
+Latvian (Latvia),lv-LV-EveritaNeural,Female,lv-LV
+Latvian (Latvia),lv-LV-NilsNeural,Male,lv-LV
+Macedonian (North Macedonia),mk-MK-MarijaNeural,Female,mk-MK
+Macedonian (North Macedonia),mk-MK-AleksandarNeural,Male,mk-MK
+Malayalam (India),ml-IN-SobhanaNeural,Female,ml-IN
+Malayalam (India),ml-IN-MidhunNeural,Male,ml-IN
+Mongolian (Mongolia),mn-MN-YesuiNeural,Female,mn-MN
+Mongolian (Mongolia),mn-MN-BataaNeural,Male,mn-MN
+Marathi (India),mr-IN-AarohiNeural,Female,mr-IN
+Marathi (India),mr-IN-ManoharNeural,Male,mr-IN
+Malay (Malaysia),ms-MY-YasminNeural,Female,ms-MY
+Malay (Malaysia),ms-MY-OsmanNeural,Male,ms-MY
+Maltese (Malta),mt-MT-GraceNeural,Female,mt-MT
+Maltese (Malta),mt-MT-JosephNeural,Male,mt-MT
+Burmese (Myanmar),my-MM-NilarNeural,Female,my-MM
+Burmese (Myanmar),my-MM-ThihaNeural,Male,my-MM
+Norwegian Bokm�l (Norway),nb-NO-PernilleNeural,Female,nb-NO
+Norwegian Bokm�l (Norway),nb-NO-FinnNeural,Male,nb-NO
+Norwegian Bokm�l (Norway),nb-NO-IselinNeural,Female,nb-NO
+Nepali (Nepal),ne-NP-HemkalaNeural,Female,ne-NP
+Nepali (Nepal),ne-NP-SagarNeural,Male,ne-NP
+Dutch (Belgium),nl-BE-DenaNeural,Female,nl-BE
+Dutch (Belgium),nl-BE-ArnaudNeural,Male,nl-BE
+Dutch (Netherlands),nl-NL-FennaNeural,Female,nl-NL
+Dutch (Netherlands),nl-NL-MaartenNeural,Male,nl-NL
+Dutch (Netherlands),nl-NL-ColetteNeural,Female,nl-NL
+Oriya (India),or-IN-SubhasiniNeural,Female,or-IN
+Oriya (India),or-IN-SukantNeural,Male,or-IN
+Punjabi (India),pa-IN-VaaniNeural,Female,pa-IN
+Punjabi (India),pa-IN-OjasNeural,Male,pa-IN
+Polish (Poland),pl-PL-AgnieszkaNeural,Female,pl-PL
+Polish (Poland),pl-PL-MarekNeural,Male,pl-PL
+Polish (Poland),pl-PL-ZofiaNeural,Female,pl-PL
+Pashto (Afghanistan),ps-AF-LatifaNeural,Female,ps-AF
+Pashto (Afghanistan),ps-AF-GulNawazNeural,Male,ps-AF
+Portuguese (Brazil),pt-BR-FranciscaNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-AntonioNeural,Male,pt-BR
+Portuguese (Brazil),pt-BR-BrendaNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-DonatoNeural,Male,pt-BR
+Portuguese (Brazil),pt-BR-ElzaNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-FabioNeural,Male,pt-BR
+Portuguese (Brazil),pt-BR-GiovannaNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-HumbertoNeural,Male,pt-BR
+Portuguese (Brazil),pt-BR-JulioNeural,Male,pt-BR
+Portuguese (Brazil),pt-BR-LeilaNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-LeticiaNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-ManuelaNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-NicolauNeural,Male,pt-BR
+Portuguese (Brazil),pt-BR-ThalitaMultilingualNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-ValerioNeural,Male,pt-BR
+Portuguese (Brazil),pt-BR-YaraNeural,Female,pt-BR
+Portuguese (Brazil),pt-BR-ThalitaNeural,Female,pt-BR
+Portuguese (Portugal),pt-PT-RaquelNeural,Female,pt-PT
+Portuguese (Portugal),pt-PT-DuarteNeural,Male,pt-PT
+Portuguese (Portugal),pt-PT-FernandaNeural,Female,pt-PT
+Romanian (Romania),ro-RO-AlinaNeural,Female,ro-RO
+Romanian (Romania),ro-RO-EmilNeural,Male,ro-RO
+Russian (Russia),ru-RU-SvetlanaNeural,Female,ru-RU
+Russian (Russia),ru-RU-DmitryNeural,Male,ru-RU
+Russian (Russia),ru-RU-DariyaNeural,Female,ru-RU
+Sinhala (Sri Lanka),si-LK-ThiliniNeural,Female,si-LK
+Sinhala (Sri Lanka),si-LK-SameeraNeural,Male,si-LK
+Slovak (Slovakia),sk-SK-ViktoriaNeural,Female,sk-SK
+Slovak (Slovakia),sk-SK-LukasNeural,Male,sk-SK
+Slovenian (Slovenia),sl-SI-PetraNeural,Female,sl-SI
+Slovenian (Slovenia),sl-SI-RokNeural,Male,sl-SI
+Somali (Somalia),so-SO-UbaxNeural,Female,so-SO
+Somali (Somalia),so-SO-MuuseNeural,Male,so-SO
+Albanian (Albania),sq-AL-AnilaNeural,Female,sq-AL
+Albanian (Albania),sq-AL-IlirNeural,Male,sq-AL
+Serbian (Latin Serbia),sr-Latn-RS-NicholasNeural,Male,sr-LATN-RS
+Serbian (Latin Serbia),sr-Latn-RS-SophieNeural,Female,sr-LATN-RS
+Serbian (Cyrillic Serbia),sr-RS-SophieNeural,Female,sr-RS
+Serbian (Cyrillic Serbia),sr-RS-NicholasNeural,Male,sr-RS
+Sundanese (Indonesia),su-ID-TutiNeural,Female,su-ID
+Sundanese (Indonesia),su-ID-JajangNeural,Male,su-ID
+Swedish (Sweden),sv-SE-SofieNeural,Female,sv-SE
+Swedish (Sweden),sv-SE-MattiasNeural,Male,sv-SE
+Swedish (Sweden),sv-SE-HilleviNeural,Female,sv-SE
+Swahili (Kenya),sw-KE-ZuriNeural,Female,sw-KE
+Swahili (Kenya),sw-KE-RafikiNeural,Male,sw-KE
+Swahili (Tanzania),sw-TZ-RehemaNeural,Female,sw-TZ
+Swahili (Tanzania),sw-TZ-DaudiNeural,Male,sw-TZ
+Tamil (India),ta-IN-PallaviNeural,Female,ta-IN
+Tamil (India),ta-IN-ValluvarNeural,Male,ta-IN
+Tamil (Sri Lanka),ta-LK-SaranyaNeural,Female,ta-LK
+Tamil (Sri Lanka),ta-LK-KumarNeural,Male,ta-LK
+Tamil (Malaysia),ta-MY-KaniNeural,Female,ta-MY
+Tamil (Malaysia),ta-MY-SuryaNeural,Male,ta-MY
+Tamil (Singapore),ta-SG-VenbaNeural,Female,ta-SG
+Tamil (Singapore),ta-SG-AnbuNeural,Male,ta-SG
+Telugu (India),te-IN-ShrutiNeural,Female,te-IN
+Telugu (India),te-IN-MohanNeural,Male,te-IN
+Thai (Thailand),th-TH-PremwadeeNeural,Female,th-TH
+Thai (Thailand),th-TH-NiwatNeural,Male,th-TH
+Thai (Thailand),th-TH-AcharaNeural,Female,th-TH
+Turkish (T�rkiye),tr-TR-EmelNeural,Female,tr-TR
+Turkish (T�rkiye),tr-TR-AhmetNeural,Male,tr-TR
+Ukrainian (Ukraine),uk-UA-PolinaNeural,Female,uk-UA
+Ukrainian (Ukraine),uk-UA-OstapNeural,Male,uk-UA
+Urdu (India),ur-IN-GulNeural,Female,ur-IN
+Urdu (India),ur-IN-SalmanNeural,Male,ur-IN
+Urdu (Pakistan),ur-PK-UzmaNeural,Female,ur-PK
+Urdu (Pakistan),ur-PK-AsadNeural,Male,ur-PK
+Uzbek (Latin Uzbekistan),uz-UZ-MadinaNeural,Female,uz-UZ
+Uzbek (Latin Uzbekistan),uz-UZ-SardorNeural,Male,uz-UZ
+Vietnamese (Vietnam),vi-VN-HoaiMyNeural,Female,vi-VN
+Vietnamese (Vietnam),vi-VN-NamMinhNeural,Male,vi-VN
+Chinese (Wu Simplified),wuu-CN-XiaotongNeural,Female,wuu-CN
+Chinese (Wu Simplified),wuu-CN-YunzheNeural,Male,wuu-CN
+Chinese (Cantonese Simplified),yue-CN-XiaoMinNeural,Female,yue-CN
+Chinese (Cantonese Simplified),yue-CN-YunSongNeural,Male,yue-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoxiaoNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunxiNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunjianNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoyiNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunyangNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaochenNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaohanNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaomengNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaomoNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoqiuNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoruiNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoshuangNeural,Child,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoyanNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoyouNeural,Child,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaozhenNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunfengNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunhaoNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunxiaNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunyeNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunzeNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaochenMultilingualNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaorouNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoxiaoDialectsNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoxiaoMultilingualNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-XiaoyuMultilingualNeural,Female,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunjieNeural,Male,zh-CN
+Chinese (Mandarin Simplified),zh-CN-YunyiMultilingualNeural,Male,zh-CN
+Chinese (Guangxi Accent Mandarin Simplified),zh-CN-guangxi-YunqiNeural,Male,zh-CN-GUANGXI
+Chinese (Zhongyuan Mandarin Henan Simplified),zh-CN-henan-YundengNeural,Male,zh-CN-henan
+Chinese (Northeastern Mandarin Simplified),zh-CN-liaoning-XiaobeiNeural,Female,zh-CN-liaoning
+Chinese (Northeastern Mandarin Simplified),zh-CN-liaoning-YunbiaoNeural,Male,zh-CN-liaoning
+Chinese (Zhongyuan Mandarin Shaanxi Simplified),zh-CN-shaanxi-XiaoniNeural,Female,zh-CN-shaanxi
+Chinese (Jilu Mandarin Simplified),zh-CN-shandong-YunxiangNeural,Male,zh-CN-shandong
+Chinese (Southwestern Mandarin Simplified),zh-CN-sichuan-YunxiNeural,Male,zh-CN-sichuan
+Chinese (Cantonese Traditional),zh-HK-HiuMaanNeural,Female,zh-HK
+Chinese (Cantonese Traditional),zh-HK-WanLungNeural,Male,zh-HK
+Chinese (Cantonese Traditional),zh-HK-HiuGaaiNeural,Female,zh-HK
+Chinese (Taiwanese Mandarin Traditional),zh-TW-HsiaoChenNeural,Female,zh-TW
+Chinese (Taiwanese Mandarin Traditional),zh-TW-YunJheNeural,Male,zh-TW
+Chinese (Taiwanese Mandarin Traditional),zh-TW-HsiaoYuNeural,Female,zh-TW
+Zulu (South Africa),zu-ZA-ThandoNeural,Female,zu-ZA
+Zulu (South Africa),zu-ZA-ThembaNeural,Male,zu-ZA
