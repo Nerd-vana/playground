@@ -6,6 +6,7 @@ import {
   useVideoConfig,
 } from 'remotion';
 import { AsciinemaPlayer, create as createPlayer } from 'asciinema-player';
+import { config } from '../config';
 
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 
@@ -18,13 +19,13 @@ export const MyComposition = () => {
   useEffect(() => {
     if (playerRef.current) {
       const player = createPlayer(
-        staticFile('/test.cast'),
+        staticFile(config.castPath),
         playerRef.current,
         {
-          autoPlay: true,
-          fit: 'both',
-          rows: 24,
-          cols: 80,
+          autoPlay: config.autoPlay,
+          fit: config.fit,
+          rows: config.rows,
+          cols: config.cols,
         }
       );
       setPlayer(player);

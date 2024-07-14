@@ -1,13 +1,12 @@
 import { Composition } from 'remotion';
 import { MyComposition } from './Composition';
+import { config } from '../config';
 
 import './style.css';
 
 export const RemotionRoot: React.FC = () => {
-	const duration = 20;
-	const fps = 24;
 
-	const durationInFrames = Math.ceil(fps * duration);
+  const durationInFrames = Math.ceil(config.fps * config.duration);
 
   return (
     <>
@@ -15,9 +14,9 @@ export const RemotionRoot: React.FC = () => {
         id="asciinema-player"
         component={MyComposition}
         durationInFrames={durationInFrames}
-        fps={fps}
-        width={640}
-        height={480}
+        fps={config.fps}
+        width={config.width}
+        height={config.height}
       />
     </>
   );
