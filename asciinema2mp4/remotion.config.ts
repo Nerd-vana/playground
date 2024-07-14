@@ -1,11 +1,8 @@
-/**
- * Note: When using the Node.JS APIs, the config file
- * doesn't apply. Instead, pass options directly to the APIs.
- *
- * All configuration options: https://remotion.dev/docs/config
- */
+import { Config } from 'remotion';
+import { webpackOverride } from './src/webpack-override';
 
-import { Config } from "@remotion/cli/config";
+Config.Rendering.setImageFormat('png');
+Config.Output.setOverwriteOutput(true);
+Config.Rendering.setConcurrency(4);
 
-Config.setVideoImageFormat("jpeg");
-Config.setOverwriteOutput(true);
+Config.Bundling.overrideWebpackConfig(webpackOverride);
