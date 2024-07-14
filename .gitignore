@@ -4,3 +4,6 @@ venv
 *.mp3
 *.ogg
 *.wav
+asciinema2mp4.tar
+*.mp4
+asciinema2mp4/outfile.mp4
