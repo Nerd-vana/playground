@@ -1,0 +1,13 @@
+Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
+To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
+I am going to demo how to use git to complete the installation in 30 seconds.
+Assume you have git on your machine.
+You just need to type {b0.5} git clone {b1} {vhttps} {b0.5} github dot com {b1.5} barrychum {b0.5} keyvault.
+The package should be downloaded in the folder keyvault.
+{ccd} into keyvault.
+{ccd} into bash, or {vpwsh} if you are using powershell.
+Add current folder to the search path.
+Type config keyvault {c--} demo.
+This will install keyvault to the default directory with all keys generated.
+Take note of the password for the private key.
+You are now ready to use keyvault.
