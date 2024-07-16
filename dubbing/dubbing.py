@@ -12,12 +12,12 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdi
 from PyQt5.QtGui import QKeySequence, QTextCursor, QTextCharFormat, QColor, QTextOption
 from PyQt5.QtCore import Qt
 
-audio_files = "tmp/wav.txt"
-timestamp_list = "tmp/timestamp.txt"
-mpv_socket = "/tmp/mpvsocket"
+work_folder = "tmp"
+audio_files = f"{work_folder}/wav.txt"
+timestamp_list = f"{work_folder}/timestamp.txt"
 video_file = "input/video.mp4"
-screen_width = None
-screen_height = None
+mpv_socket = "/tmp/mpvsocket"
+afplay_process = None
 
 # Save the terminal settings
 fd = sys.stdin.fileno()
@@ -78,6 +78,16 @@ def start_mpv():
     ]
     subprocess.Popen(mpv_command)
 
+def play_audio(file_path):
+    global afplay_process
+    if afplay_process is not None:
+        afplay_process.terminate()
+        afplay_process.wait()
+    afplay_process = subprocess.Popen(["afplay", file_path])
+
+def adjust_volume(amount):
+    send_mpv_command({"command": ["add", "volume", amount]})
+
 class SubtitleApp(QWidget):
     def __init__(self):
         super().__init__()
@@ -131,6 +141,7 @@ class SubtitleApp(QWidget):
     def setup_shortcuts(self):
         QShortcut(QKeySequence("Q"), self).activated.connect(self.quit_app)
         QShortcut(QKeySequence("P"), self).activated.connect(self.toggle_pause)
+        QShortcut(QKeySequence("M"), self).activated.connect(self.toggle_mute)
         QShortcut(QKeySequence("T"), self).activated.connect(self.timestamp_current_subtitle)
         QShortcut(QKeySequence("B"), self).activated.connect(self.seek_back)
         QShortcut(QKeySequence("F"), self).activated.connect(self.seek_forward)
@@ -138,13 +149,20 @@ class SubtitleApp(QWidget):
         QShortcut(QKeySequence("]"), self).activated.connect(self.seek_frame_forward)
         QShortcut(QKeySequence(Qt.Key_Up), self).activated.connect(self.previous_item)
         QShortcut(QKeySequence(Qt.Key_Down), self).activated.connect(self.next_item)
+        QShortcut(QKeySequence(Qt.Key_Return), self).activated.connect(self.play_current_audio)
+        QShortcut(QKeySequence("+"), self).activated.connect(lambda: adjust_volume(5))
+        QShortcut(QKeySequence("-"), self).activated.connect(lambda: adjust_volume(-5))
 
     def closeEvent(self, event):
         send_mpv_command({"command": ["quit"]})
+        if afplay_process is not None:
+            afplay_process.terminate()
         event.accept()
 
     def quit_app(self):
         send_mpv_command({"command": ["quit"]})
+        if afplay_process is not None:
+            afplay_process.terminate()
         QApplication.instance().quit()
 
     def toggle_pause(self):
@@ -152,12 +170,9 @@ class SubtitleApp(QWidget):
         self.status = "Toggled pause"
         self.update_status()
 
-    def timestamp_current_subtitle(self):
-        subtitle = self.subtitles[self.current_index].strip()
-        time = timestamp_subtitle(subtitle)
-        self.status = f"{time}: {subtitle}"
-        self.current_index = min(len(self.subtitles) - 1, self.current_index + 1)
-        self.update_subtitle()
+    def toggle_mute(self):
+        send_mpv_command({"command": ["cycle", "mute"]})
+        self.status = "Toggled mute"
         self.update_status()
 
     def seek_frame_back(self):
@@ -191,6 +206,28 @@ class SubtitleApp(QWidget):
     def next_item(self):
         self.current_index = min(len(self.subtitles) - 1, self.current_index + 1)
         self.update_subtitle()
+
+    def timestamp_current_subtitle(self):
+        subtitle = self.subtitles[self.current_index].strip()
+        audio_path = f"{work_folder}/{subtitle}"
+        if os.path.exists(audio_path):
+            play_audio(audio_path)
+        time = timestamp_subtitle(subtitle)
+        self.status = f"{time}: {subtitle}"
+        self.current_index = min(len(self.subtitles) - 1, self.current_index + 1)
+        self.update_subtitle()
+        self.update_status()
+
+    def play_current_audio(self):
+        audio_file = self.subtitles[self.current_index].strip()
+        audio_path = f"{work_folder}/{audio_file}"
+        if os.path.exists(audio_path):
+            play_audio(audio_path)
+            self.status = f"Playing: {audio_file}"
+            self.update_status()
+        else:
+            self.status = f"Audio file not found: {audio_path}"
+            self.update_status()
 
     def get_subtitle_text(self):
         return "".join(self.subtitles)
@@ -229,7 +266,7 @@ if __name__ == "__main__":
 
     # Get screen dimensions
     screen_geometry = QApplication.desktop().screenGeometry()
-    #global screen_width, screen_height
+    global screen_width, screen_height
     screen_width = screen_geometry.width()
     screen_height = screen_geometry.height()
 

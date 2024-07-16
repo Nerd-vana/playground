@@ -14,6 +14,6 @@ for file in input/*.mp3; do
 done
 
 #ls tmp/*.wav | xargs -n 1 basename | sort > tmp/wav.txt
-find tmp -type f -name '??????-*.wav' | sort > tmp/wav.txt
+find tmp -type f -name '??????-*.wav' -print0 | xargs -0 -n1 basename | sort > tmp/wav.txt
 
 echo "Conversion completed."
