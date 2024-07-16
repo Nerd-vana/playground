@@ -12,8 +12,8 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdi
 from PyQt5.QtGui import QKeySequence, QTextCursor, QTextCharFormat, QColor, QTextOption
 from PyQt5.QtCore import Qt
 
-subtitles_file = "tmp/wav.txt"
-output_file = "tmp/timestamp.txt"
+audio_files = "tmp/wav.txt"
+timestamp_list = "tmp/timestamp.txt"
 mpv_socket = "/tmp/mpvsocket"
 video_file = "input/video.mp4"
 screen_width = None
@@ -41,7 +41,7 @@ def get_mpv_time():
 
 def timestamp_subtitle(subtitle):
     time = get_mpv_time()
-    with open(output_file, "a") as f:
+    with open(timestamp_list, "a") as f:
         f.write(f"{time}|{subtitle}\n")
     return time
 
@@ -81,7 +81,7 @@ def start_mpv():
 class SubtitleApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.subtitles = open(subtitles_file).readlines()
+        self.subtitles = open(audio_files).readlines()
         self.current_index = 0
         self.status = "Ready"
 
@@ -94,7 +94,7 @@ class SubtitleApp(QWidget):
         self.setFocus()
 
     def initUI(self):
-        self.setWindowTitle('Subtitle App')
+        self.setWindowTitle('Dubbing App')
 
         # Define the top-left corner coordinates
         top_left_x = 50
@@ -136,8 +136,8 @@ class SubtitleApp(QWidget):
         QShortcut(QKeySequence("F"), self).activated.connect(self.seek_forward)
         QShortcut(QKeySequence("["), self).activated.connect(self.seek_frame_back)
         QShortcut(QKeySequence("]"), self).activated.connect(self.seek_frame_forward)
-        QShortcut(QKeySequence(Qt.Key_Up), self).activated.connect(self.previous_subtitle)
-        QShortcut(QKeySequence(Qt.Key_Down), self).activated.connect(self.next_subtitle)
+        QShortcut(QKeySequence(Qt.Key_Up), self).activated.connect(self.previous_item)
+        QShortcut(QKeySequence(Qt.Key_Down), self).activated.connect(self.next_item)
 
     def closeEvent(self, event):
         send_mpv_command({"command": ["quit"]})
@@ -184,11 +184,11 @@ class SubtitleApp(QWidget):
         self.status = f"Seeked forward 2 seconds : {cur_time}"
         self.update_status()
 
-    def previous_subtitle(self):
+    def previous_item(self):
         self.current_index = max(0, self.current_index - 1)
         self.update_subtitle()
 
-    def next_subtitle(self):
+    def next_item(self):
         self.current_index = min(len(self.subtitles) - 1, self.current_index + 1)
         self.update_subtitle()
 
