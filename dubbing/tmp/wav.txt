@@ -1,0 +1,13 @@
+141000-WelcomeThisIsAVeryQuickDemoOfHowYouCanIn.wav
+141003-ToInstallKeyvaultYouCanEitherDownloadThe.wav
+141005-IAmGoingToDemoHowToUseGitToCompleteTheIn.wav
+141008-AssumeYouHaveGitOnYourMachine.wav
+141010-YouJustNeedToTypeB05GitCloneB1VhttpsB05G.wav
+141014-ThePackageShouldBeDownloadedInTheFolderK.wav
+141016-CcdIntoKeyvault.wav
+141019-CcdIntoBashOrVpwshIfYouAreUsingPowershel.wav
+141021-AddCurrentFolderToTheSearchPath.wav
+141023-TypeConfigKeyvaultCDemo.wav
+141026-ThisWillInstallKeyvaultToTheDefaultDirec.wav
+141028-TakeNoteOfThePasswordForThePrivateKey.wav
+141030-YouAreNowReadyToUseKeyvault.wav
