@@ -12,10 +12,11 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdi
 from PyQt5.QtGui import QKeySequence, QTextCursor, QTextCharFormat, QColor, QTextOption
 from PyQt5.QtCore import Qt
 
-work_folder = "tmp"
+project = "test"
+work_folder = f"{project}/tmp"
 audio_files = f"{work_folder}/wav.txt"
 timestamp_list = f"{work_folder}/timestamp.txt"
-video_file = "input/video.mp4"
+video_file = f"{project}/input/video.mp4"
 mpv_socket = "/tmp/mpvsocket"
 afplay_process = None
 
@@ -80,9 +81,9 @@ def start_mpv():
 
 def play_audio(file_path):
     global afplay_process
-    if afplay_process is not None:
-        afplay_process.terminate()
-        afplay_process.wait()
+    #if afplay_process is not None:
+    #    afplay_process.terminate()
+    #    afplay_process.wait()
     afplay_process = subprocess.Popen(["afplay", file_path])
 
 def adjust_volume(amount):
