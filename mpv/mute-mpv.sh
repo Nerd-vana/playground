@@ -1,0 +1,1 @@
+echo '{ "command": ["cycle", "mute"] }' | nc -U /tmp/mpvsocket

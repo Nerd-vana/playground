@@ -8,3 +8,5 @@ asciinema2mp4.tar
 *.mp4
 asciinema2mp4/outfile.mp4
 .version
+__pycache__
+*.pyc
