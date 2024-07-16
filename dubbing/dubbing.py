@@ -12,10 +12,10 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdi
 from PyQt5.QtGui import QKeySequence, QTextCursor, QTextCharFormat, QColor, QTextOption
 from PyQt5.QtCore import Qt
 
-subtitles_file = "subtitles.txt"
-output_file = "timestamped_subtitles.txt"
+subtitles_file = "tmp/wav.txt"
+output_file = "tmp/timestamp.txt"
 mpv_socket = "/tmp/mpvsocket"
-video_file = "video.mp4"
+video_file = "input/video.mp4"
 screen_width = None
 screen_height = None
 
