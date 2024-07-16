@@ -1,125 +1,13 @@
-4.4044|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-12.4124|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-16.7167|I am going to demo how to use git to complete the installation in 30 seconds.
-1.067733|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-2.7027|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-3.236567|I am going to demo how to use git to complete the installation in 30 seconds.
-16.6166|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-20.487133|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-14.180833|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-15.348667|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-11.8118|I am going to demo how to use git to complete the installation in 30 seconds.
-25.091733|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-26.2262|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-26.7267|I am going to demo how to use git to complete the installation in 30 seconds.
-25.6256|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-26.693333|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-2.135467|The package should be downloaded in the folder keyvault.
-4.9049|{vcd} into keyvault.
-13.4134|{vcd} into bash, or {vpwsh} if you are using powershell.
-8.6086|You are now ready to use keyvault.
-11.144467|You are now ready to use keyvault.
-13.3133|{vcd} into bash, or {vpwsh} if you are using powershell.
-14.180833|Add current folder to the search path.
-14.881533|Type config keyvault {v--} demo.
-15.281933|This will install keyvault to the default directory with all keys generated.
-15.9159|Take note of the password for the private key.
-16.3163|You are now ready to use keyvault.
-16.549867|You are now ready to use keyvault.
-16.8168|You are now ready to use keyvault.
-1.968633|You are now ready to use keyvault.
-11.011|You are now ready to use keyvault.
-7.774433|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-0.0|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-12.679333|Assume you have git on your machine.
-31.998633|{vcd} into keyvault.
-0.0|Assume you have git on your machine.
-0.0|{vcd} into keyvault.
-20.02|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-15.015|I am going to demo how to use git to complete the installation in 30 seconds.
-15.015|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-15.015|{vcd} into keyvault.
-15.015|{vcd} into bash, or {vpwsh} if you are using powershell.
-15.015|Type config keyvault {v--} demo.
-15.015|This will install keyvault to the default directory with all keys generated.
-1.534867|Assume you have git on your machine.
-2.836167|{vcd} into keyvault.
-4.004|Type config keyvault {v--} demo.
-6.3063|Add current folder to the search path.
-6.3063|Type config keyvault {v--} demo.
-6.3063|This will install keyvault to the default directory with all keys generated.
-6.3063|{vcd} into keyvault.
-6.3063|{vcd} into bash, or {vpwsh} if you are using powershell.
-6.3063|Add current folder to the search path.
-0.0|Assume you have git on your machine.
-0.0|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-0.0|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-0.0|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-0.0|I am going to demo how to use git to complete the installation in 30 seconds.
-0.0|Assume you have git on your machine.
-0.0|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-0.0|The package should be downloaded in the folder keyvault.
-0.0|{vcd} into keyvault.
-0.0|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-0.0|Assume you have git on your machine.
-0.0|{vcd} into bash, or {vpwsh} if you are using powershell.
-0.0|Take note of the password for the private key.
-0.0|You are now ready to use keyvault.
-0.0|Type config keyvault {v--} demo.
-0.0|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-0.0|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-2.235567|{vcd} into keyvault.
-4.037367|This will install keyvault to the default directory with all keys generated.
-6.272933|This will install keyvault to the default directory with all keys generated.
-13.680333|Type config keyvault {v--} demo.
-14.781433|Add current folder to the search path.
-18.952267|Type config keyvault {v--} demo.
-19.386033|This will install keyvault to the default directory with all keys generated.
-0.0|The package should be downloaded in the folder keyvault.
-0.767433|{vcd} into keyvault.
-1.868533|{vcd} into bash, or {vpwsh} if you are using powershell.
-2.6026|Add current folder to the search path.
-3.436767|Type config keyvault {v--} demo.
-6.272933|This will install keyvault to the default directory with all keys generated.
-3.536867|Assume you have git on your machine.
-16.082733|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-16.282933|The package should be downloaded in the folder keyvault.
-0.0|Assume you have git on your machine.
-0.0|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-0.0|The package should be downloaded in the folder keyvault.
-0.6006|{vcd} into keyvault.
-1.134467|{vcd} into bash, or {vpwsh} if you are using powershell.
-2.002|Add current folder to the search path.
-2.769433|Type config keyvault {v--} demo.
-7.474133|This will install keyvault to the default directory with all keys generated.
-7.674333|Take note of the password for the private key.
-0.767|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-3.036|{vcd} into bash, or {vpwsh} if you are using powershell.
-4.438|Add current folder to the search path.
-5.439|Type config keyvault {v--} demo.
-1.335|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-3.737|The package should be downloaded in the folder keyvault.
-5.906|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-7.207|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-8.342|I am going to demo how to use git to complete the installation in 30 seconds.
-8.976|Assume you have git on your machine.
-6.039|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-8.308|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-8.308|I am going to demo how to use git to complete the installation in 30 seconds.
-8.308|Assume you have git on your machine.
-8.308|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-8.308|The package should be downloaded in the folder keyvault.
-8.308|{vcd} into keyvault.
-8.308|{vcd} into bash, or {vpwsh} if you are using powershell.
-8.308|Add current folder to the search path.
-8.308|Type config keyvault {v--} demo.
-2.603|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-3.370|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-0.100|Welcome.  This is a very quick demo of how you can install and use keyvault to secure your {cAPI} keys or tokens.
-0.167|To install keyvault, you can either download the package as a zip file, or you can use git command which is a lot easier.
-0.267|I am going to demo how to use git to complete the installation in 30 seconds.
-0.467|Assume you have git on your machine.
-0.667|You just need to type {b500} git clone {b1000} {vhttps} {b500} github dot com {b1500} barrychum {b500} keyvault.
-0.968|The package should be downloaded in the folder keyvault.
-1.201|{vcd} into keyvault.
-5.038|The package should be downloaded in the folder keyvault.
+2.169|141000-WelcomeThisIsAVeryQuickDemoOfHowYouCanIn.mp3
+5.339|141003-ToInstallKeyvaultYouCanEitherDownloadThe.mp3
+7.941|141005-IAmGoingToDemoHowToUseGitToCompleteTheIn.mp3
+10.410|141008-AssumeYouHaveGitOnYourMachine.mp3
+13.113|141010-YouJustNeedToTypeB05GitCloneB1VhttpsB05G.mp3
+16.416|141014-ThePackageShouldBeDownloadedInTheFolderK.mp3
+19.686|141016-CcdIntoKeyvault.mp3
+23.056|141019-CcdIntoBashOrVpwshIfYouAreUsingPowershel.mp3
+26.693|141021-AddCurrentFolderToTheSearchPath.mp3
+29.730|141023-TypeConfigKeyvaultCDemo.mp3
+32.633|141026-ThisWillInstallKeyvaultToTheDefaultDirec.mp3
+35.535|141028-TakeNoteOfThePasswordForThePrivateKey.mp3
+38.872|141030-YouAreNowReadyToUseKeyvault.mp3

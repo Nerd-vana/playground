@@ -6,6 +6,8 @@ import sys
 import os
 import termios
 import atexit
+import time
+import socket
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdit, QShortcut
 from PyQt5.QtGui import QKeySequence, QTextCursor, QTextCharFormat, QColor, QTextOption
 from PyQt5.QtCore import Qt
@@ -14,6 +16,8 @@ subtitles_file = "subtitles.txt"
 output_file = "timestamped_subtitles.txt"
 mpv_socket = "/tmp/mpvsocket"
 video_file = "video.mp4"
+screen_width = None
+screen_height = None
 
 # Save the terminal settings
 fd = sys.stdin.fileno()
@@ -41,6 +45,22 @@ def timestamp_subtitle(subtitle):
         f.write(f"{time}|{subtitle}\n")
     return time
 
+def wait_for_mpv_to_load(socket_path):
+    while True:
+        try:
+            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as client_socket:
+                client_socket.connect(socket_path)
+                return  # Exit the loop if connection is successful
+        except socket.error:
+            time.sleep(1)  # Wait for 1 second before trying again
+
+def seconds_to_timecode(seconds):
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    secs = seconds % 60
+    timecode = f"{hours:02}:{minutes:02}:{secs:06.3f}"
+    return timecode
+
 def start_mpv():
     mpv_width = 1000
     mpv_x = 1400
@@ -53,6 +73,7 @@ def start_mpv():
         f"--input-ipc-server={mpv_socket}",
         f"--geometry={mpv_width}+{mpv_x}+{mpv_y}",
         "--pause",
+        "--mute", 
         video_file
     ]
     subprocess.Popen(mpv_command)
@@ -67,6 +88,10 @@ class SubtitleApp(QWidget):
         self.initUI()
         self.setup_shortcuts()
         start_mpv()
+        wait_for_mpv_to_load(mpv_socket)  # Wait for mpv to be ready
+        self.activateWindow()
+        self.raise_()
+        self.setFocus()
 
     def initUI(self):
         self.setWindowTitle('Subtitle App')
@@ -92,8 +117,7 @@ class SubtitleApp(QWidget):
         self.subtitle_text.setFixedHeight(height - 100)  # Adjust height to fit the window
         self.subtitle_text.setFixedWidth(width - 20)  # Adjust width to fit the window
 
-#        self.status_label = QLabel(f"Status: {self.status} | Press Q to quit", self)
-        self.status_label = QLabel(f"Status: \n{self.status}\nPress Q to quit", self)
+        self.status_label = QLabel(f"Status: \n{self.status} | Press Q to quit", self)
         self.status_label.setWordWrap(True)  # Enable word wrapping for the status label
         self.status_label.setFixedWidth(width - 20)  # Adjust width to fit the window
 
@@ -134,22 +158,26 @@ class SubtitleApp(QWidget):
 
     def seek_frame_back(self):
         send_mpv_command({"command": ["frame-back-step"]})
-        self.status = "backward 1 frame"
+        cur_time =  seconds_to_timecode(float(get_mpv_time()))
+        self.status = f"backward 1 frame : {cur_time}"        
         self.update_status()
 
     def seek_frame_forward(self):
         send_mpv_command({"command": ["frame-step"]})
-        self.status = "forward 1 frame"
+        cur_time =  seconds_to_timecode(float(get_mpv_time()))
+        self.status = f"forward 1 frame : {cur_time}"
         self.update_status()
 
     def seek_back(self):
-        send_mpv_command({"command": ["seek", -3]})
-        self.status = "Seeked back 3 seconds"
+        send_mpv_command({"command": ["seek", -2]})
+        cur_time = seconds_to_timecode(float(get_mpv_time()))
+        self.status = f"Seeked back 2 seconds : {cur_time}"
         self.update_status()
 
     def seek_forward(self):
-        send_mpv_command({"command": ["seek", 3]})
-        self.status = "Seeked forward 3 seconds"
+        send_mpv_command({"command": ["seek", 2]})
+        cur_time =  seconds_to_timecode(float(get_mpv_time()))
+        self.status = f"Seeked forward 2 seconds : {cur_time}"
         self.update_status()
 
     def previous_subtitle(self):
@@ -190,14 +218,14 @@ class SubtitleApp(QWidget):
         self.subtitle_text.horizontalScrollBar().setValue(0)
 
     def update_status(self):
-        self.status_label.setText(f"Status: \n{self.status}\nPress Q to quit")
+        self.status_label.setText(f"Status: \n{self.status} | Press Q to quit")
 
 if __name__ == "__main__":
     app = QApplication([])
 
     # Get screen dimensions
     screen_geometry = QApplication.desktop().screenGeometry()
-    global screen_width, screen_height
+    #global screen_width, screen_height
     screen_width = screen_geometry.width()
     screen_height = screen_geometry.height()
 
