@@ -2,9 +2,6 @@
 
 project="$1"
 
-timestamp_file="${project}/tmp/timestamp.txt"
-silent_file="${project}/tmp/silent.wav"
-
 # Function to process audio file
 process_audio() {
     local pos=$1
@@ -17,7 +14,7 @@ process_audio() {
     tempfile="$(mktemp).wav"
 
     # Overlay the audio file
-    ffmpeg -i "$silent_file" -i "tmp/$audio_file" -filter_complex "[1:a]adelay=${pos}[delayed];[0:a][delayed]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[out]" -map "[out]" -hide_banner -loglevel error "$tempfile"
+    ffmpeg -i "$silent_file" -i "$project/tmp/$audio_file" -filter_complex "[1:a]adelay=${pos}[delayed];[0:a][delayed]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[out]" -map "[out]" -hide_banner -loglevel error "$tempfile"
 
     # Move the temporary file to replace silent.wav
     mv "$tempfile" "$silent_file"
@@ -35,6 +32,8 @@ duration="$(ffprobe -v error -show_entries format=duration -of default=noprint_w
 
 ffmpeg  -hide_banner -loglevel error -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=24000 -t "$duration" -ac 1 "$folder/silent.wav"
 
+timestamp_file="${project}/tmp/timestamp.txt"
+silent_file="${project}/tmp/silent.wav"
 
 awk -F'|' '{seen[$2]=$0} END {for (key in seen) print seen[key]}' "$timestamp_file" | sort -t'|' -k1,1n | while IFS='|' read -r pos audio_file
 do

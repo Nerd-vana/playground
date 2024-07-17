@@ -8,15 +8,12 @@ import termios
 import atexit
 import time
 import socket
+import argparse
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdit, QShortcut
 from PyQt5.QtGui import QKeySequence, QTextCursor, QTextCharFormat, QColor, QTextOption
 from PyQt5.QtCore import Qt
 
-project = "test"
-work_folder = f"{project}/tmp"
-audio_files = f"{work_folder}/wav.txt"
-timestamp_list = f"{work_folder}/timestamp.txt"
-video_file = f"{project}/input/video.mp4"
+# Global variables
 mpv_socket = "/tmp/mpvsocket"
 afplay_process = None
 
@@ -32,6 +29,7 @@ def reset_terminal():
 atexit.register(reset_terminal)
 
 def send_mpv_command(command):
+    global mpv_socket
     cmd = f"echo '{json.dumps(command)}' | nc -U -w 1 {mpv_socket}"
     return subprocess.getoutput(cmd)
 
@@ -44,7 +42,7 @@ def goto_pos(time_pos):
     send_mpv_command({"command": ["seek", time_pos, "absolute"]})
     return
 
-def timestamp_subtitle(subtitle):
+def timestamp_subtitle(subtitle, timestamp_list):
     time = get_mpv_time()
     with open(timestamp_list, "a") as f:
         f.write(f"{time}|{subtitle}\n")
@@ -66,7 +64,8 @@ def seconds_to_timecode(seconds):
     timecode = f"{hours:02}:{minutes:02}:{secs:06.3f}"
     return timecode
 
-def start_mpv():
+def start_mpv(video_file):
+    global mpv_socket
     mpv_width = 1000
     mpv_x = 1400
     mpv_y = 200
@@ -100,15 +99,21 @@ def adjust_volume(amount):
     send_mpv_command({"command": ["add", "volume", amount]})
 
 class SubtitleApp(QWidget):
-    def __init__(self):
+    def __init__(self, project):
         super().__init__()
-        self.subtitles = open(audio_files).readlines()
+        self.project = project
+        self.work_folder = f"{self.project}/tmp"
+        self.audio_files = f"{self.work_folder}/wav.txt"
+        self.timestamp_list = f"{self.work_folder}/timestamp.txt"
+        self.video_file = f"{self.project}/input/video.mp4"
+        
+        self.subtitles = open(self.audio_files).readlines()
         self.current_index = 0
         self.status = "Ready"
 
         self.initUI()
         self.setup_shortcuts()
-        start_mpv()
+        start_mpv(self.video_file)
         wait_for_mpv_to_load(mpv_socket)  # Wait for mpv to be ready
         self.activateWindow()
         self.raise_()
@@ -221,10 +226,10 @@ class SubtitleApp(QWidget):
 
     def timestamp_current_subtitle(self):
         subtitle = self.subtitles[self.current_index].strip()
-        audio_path = f"{work_folder}/{subtitle}"
+        audio_path = f"{self.work_folder}/{subtitle}"
         if os.path.exists(audio_path):
             play_audio(audio_path)
-        time = timestamp_subtitle(subtitle)
+        time = timestamp_subtitle(subtitle, self.timestamp_list)
         self.status = f"{time}: {subtitle}"
         self.current_index = min(len(self.subtitles) - 1, self.current_index + 1)
         self.update_subtitle()
@@ -232,7 +237,7 @@ class SubtitleApp(QWidget):
 
     def play_current_audio(self):
         audio_file = self.subtitles[self.current_index].strip()
-        audio_path = f"{work_folder}/{audio_file}"
+        audio_path = f"{self.work_folder}/{audio_file}"
         if os.path.exists(audio_path):
             play_audio(audio_path)
             self.status = f"Playing: {audio_file}"
@@ -243,14 +248,14 @@ class SubtitleApp(QWidget):
 
     def find_last_and_play_audio(self):
         audio_file = self.subtitles[self.current_index].strip()
-        audio_path = f"{work_folder}/{audio_file}"
+        audio_path = f"{self.work_folder}/{audio_file}"
 
-        if not os.path.exists(timestamp_list):
-            self.status = f"Timestamp file not found: {timestamp_list}"
+        if not os.path.exists(self.timestamp_list):
+            self.status = f"Timestamp file not found: {self.timestamp_list}"
             self.update_status()
             return
 
-        with open(timestamp_list, "r") as f:
+        with open(self.timestamp_list, "r") as f:
             lines = f.readlines()
 
         # Reverse the list to find the last occurrence
@@ -304,6 +309,11 @@ class SubtitleApp(QWidget):
         self.status_label.setText(f"Status: \n{self.status} | Press Q to quit")
 
 if __name__ == "__main__":
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description='Subtitle Application')
+    parser.add_argument('--project', type=str, required=True, help='The project parameter')
+    args = parser.parse_args()
+
     app = QApplication([])
 
     # Get screen dimensions
@@ -312,7 +322,7 @@ if __name__ == "__main__":
     screen_width = screen_geometry.width()
     screen_height = screen_geometry.height()
 
-    ex = SubtitleApp()
+    ex = SubtitleApp(project=args.project)
     ex.show()
     # Reset horizontal scroll to left at startup
     ex.subtitle_text.horizontalScrollBar().setValue(0)
