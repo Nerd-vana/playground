@@ -40,6 +40,10 @@ def get_mpv_time():
     time = json.loads(response)["data"]
     return f"{time:.3f}"
 
+def goto_pos(time_pos):
+    send_mpv_command({"command": ["seek", time_pos, "absolute"]})
+    return
+
 def timestamp_subtitle(subtitle):
     time = get_mpv_time()
     with open(timestamp_list, "a") as f:
@@ -75,15 +79,21 @@ def start_mpv():
         f"--geometry={mpv_width}+{mpv_x}+{mpv_y}",
         "--pause",
         "--mute", 
+        "--profile=low-latency", 
+        "--untimed", 
         video_file
     ]
     subprocess.Popen(mpv_command)
 
+def play_audio_exclusive(file_path):
+    global afplay_process
+    if afplay_process is not None:
+        afplay_process.terminate()
+        afplay_process.wait()
+    afplay_process = subprocess.Popen(["afplay", file_path])
+
 def play_audio(file_path):
     global afplay_process
-    #if afplay_process is not None:
-    #    afplay_process.terminate()
-    #    afplay_process.wait()
     afplay_process = subprocess.Popen(["afplay", file_path])
 
 def adjust_volume(amount):
@@ -153,6 +163,7 @@ class SubtitleApp(QWidget):
         QShortcut(QKeySequence(Qt.Key_Return), self).activated.connect(self.play_current_audio)
         QShortcut(QKeySequence("+"), self).activated.connect(lambda: adjust_volume(5))
         QShortcut(QKeySequence("-"), self).activated.connect(lambda: adjust_volume(-5))
+        QShortcut(QKeySequence("G"), self).activated.connect(self.find_last_and_play_audio)
 
     def closeEvent(self, event):
         send_mpv_command({"command": ["quit"]})
@@ -229,6 +240,36 @@ class SubtitleApp(QWidget):
         else:
             self.status = f"Audio file not found: {audio_path}"
             self.update_status()
+
+    def find_last_and_play_audio(self):
+        audio_file = self.subtitles[self.current_index].strip()
+        audio_path = f"{work_folder}/{audio_file}"
+
+        if not os.path.exists(timestamp_list):
+            self.status = f"Timestamp file not found: {timestamp_list}"
+            self.update_status()
+            return
+
+        with open(timestamp_list, "r") as f:
+            lines = f.readlines()
+
+        # Reverse the list to find the last occurrence
+        for line in reversed(lines):
+            if audio_file in line:
+                timestamp = line.split('|')[0]
+                if os.path.exists(audio_path):
+                    goto_pos(float(timestamp))
+                    play_audio_exclusive(audio_path)
+                    self.status = f"Playing: {audio_file} at {timestamp}"
+                    self.update_status()
+                    return
+                else:
+                    self.status = f"Audio file not found: {audio_path}"
+                    self.update_status()
+                    return
+
+        self.status = f"Audio file {audio_file} not found in timestamp list"
+        self.update_status()
 
     def get_subtitle_text(self):
         return "".join(self.subtitles)
