@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asciinema Player</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css">
+    <style>
+    .player-wrapper {
+        width: 50vw;
+        margin: 0 auto;
+    }
+    </style>
+</head>
+<body>
+    <div class="player-wrapper">
+        <div id="player-container"></div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.min.js"></script>
+    <script>
+AsciinemaPlayer.create('input.cast', document.getElementById('player-container'), {
+    cols: 80,
+    rows: 24
+});
+
+    </script>
+</body>
+</html>

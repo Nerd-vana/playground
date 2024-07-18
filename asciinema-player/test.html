@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://asciinema.org/a/your-recording-id.css">
+    <title>Asciinema Player</title>
+</head>
+<body>
+    <div id="player"></div>
+
+    <button id="pauseButton">Pause and Get Current Position</button>
+    <div id="currentTimeDisplay"></div>
+
+    <script src="https://asciinema.org/a/your-recording-id.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/asciinema-player/2.6.1/asciinema-player.js"></script>
+    <script>
+        // Initialize the Asciinema player
+        const player = AsciinemaPlayer.create('./input.cast', document.getElementById('player'));
+
+        // Pause button functionality
+        document.getElementById('pauseButton').addEventListener('click', () => {
+            player.pause();
+            const currentTime = player.currentTime;
+            document.getElementById('currentTimeDisplay').innerText = `Current Time: ${currentTime.toFixed(2)} seconds`;
+        });
+    </script>
+</body>
+</html>

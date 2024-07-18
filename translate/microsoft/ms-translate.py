@@ -8,20 +8,23 @@ load_dotenv()
 
 # Your Azure subscription key and endpoint
 subscription_key = os.getenv('AZURE_TRANSLATOR_KEY')
-endpoint = "https://api.cognitive.microsofttranslator.com"
-
-# Location, also known as region.
-# Required if you're using a multi-service or regional (not global) resource.
 location = os.getenv('AZURE_TRANSLATOR_LOCATION')
+
+endpoint = "https://api.cognitive.microsofttranslator.com"
 
 path = '/translate'
 constructed_url = endpoint + path
 
+# list of language code can be found here
+# https://learn.microsoft.com/en-us/azure/ai-services/translator/language-support
+
 params = {
     'api-version': '3.0',
     'from': 'en',
-    'to': ['es', 'fr']  # You can specify multiple target languages
+    'to': ['es', 'zh-tw']  # You can specify multiple target languages
 }
+
+    #'to': ['zh-hk','zh-tw']  # You can specify multiple target languages
 
 headers = {
     'Ocp-Apim-Subscription-Key': subscription_key,
@@ -32,7 +35,7 @@ headers = {
 
 # You can pass more than one object in body.
 body = [{
-    'text': 'Hello, world!'
+    'text': "The Covid inquiry report makes it clear: Britain was completely and fatally unprepared"
 }]
 
 request = requests.post(constructed_url, params=params, headers=headers, json=body)
