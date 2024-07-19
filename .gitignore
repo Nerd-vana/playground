@@ -11,4 +11,4 @@ asciinema2mp4/outfile.mp4
 __pycache__
 *.pyc
 .env
-shazam/.cache
+.cache
