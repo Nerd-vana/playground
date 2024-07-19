@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asciinema Player and Editor</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css">
+    <style>
+        .container {
+            display: flex;
+            width: 90vw;
+            margin: 0 auto;
+        }
+
+        .player-wrapper {
+            width: 70%;
+        }
+
+        .timestamp-list {
+            width: 30%;
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-left: 20px;
+        }
+
+        .controls {
+            margin-top: 10px;
+        }
+
+        .controls button {
+            margin-right: 5px;
+        }
+
+        #current-position {
+            margin-top: 10px;
+        }
+
+        #timeline {
+            width: 100%;
+            height: 30px;
+            background-color: #f0f0f0;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .segment {
+            position: absolute;
+            height: 100%;
+            background-color: rgba(0, 128, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="player-wrapper">
+            <div id="player-container"></div>
+            <div id="timeline"></div>
+            <div class="controls">
+                <button id="play-pause-button">Play/Pause (Space)</button>
+                <button id="forward-button">Forward 2s (F)</button>
+                <button id="backward-button">Back 2s (B)</button>
+                <button id="small-backward-button">Back 0.2s ([)</button>
+                <button id="small-forward-button">Forward 0.2s (])</button>
+                <button id="in-button">In (I)</button>
+                <button id="out-button">Out (O)</button>
+                <button id="mark-button">Mark (M)</button>
+                <button id="undo-button">Undo (Ctrl+Z)</button>
+                <button id="export-button">Export Marks</button>
+            </div>
+            <div id="current-position"></div>
+        </div>
+        <div id="timestamp-list" class="timestamp-list"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.min.js"></script>
+    <script>
+        let player;
+        let isPlaying = true;
+        let marks = [];
+        let undoStack = [];
+
+        window.onload = function () {
+            const castFile = 'your-recording.cast'; // Replace with your actual cast file
+            player = AsciinemaPlayer.create(castFile, document.getElementById('player-container'), {
+                cols: 80,
+                rows: 24
+            });
+
+            startPositionUpdate(); // Start updating the position
+
+            const playPauseButton = document.getElementById('play-pause-button');
+            const forwardButton = document.getElementById('forward-button');
+            const backwardButton = document.getElementById('backward-button');
+            const smallForwardButton = document.getElementById('small-forward-button');
+            const smallBackwardButton = document.getElementById('small-backward-button');
+            const inButton = document.getElementById('in-button');
+            const outButton = document.getElementById('out-button');
+            const markButton = document.getElementById('mark-button');
+            const undoButton = document.getElementById('undo-button');
+            const exportButton = document.getElementById('export-button');
+            const currentPositionDiv = document.getElementById('current-position');
+            const timestampList = document.getElementById('timestamp-list');
+            const timeline = document.getElementById('timeline');
+
+            function showCurrentPosition() {
+                const currentTime = player.getCurrentTime();
+                currentPositionDiv.textContent = `Current position: ${currentTime.toFixed(3)} seconds`;
+            }
+
+            function startPositionUpdate() {
+                setInterval(showCurrentPosition, 100); // Update every 100ms
+            }
+
+            function togglePlayPause() {
+                if (isPlaying) {
+                    player.pause();
+                    playPauseButton.textContent = "Play (Space)";
+                } else {
+                    player.play();
+                    playPauseButton.textContent = "Pause (Space)";
+                }
+                isPlaying = !isPlaying;
+            }
+
+            function seekRelative(seconds) {
+                const newTime = Math.max(0, player.getCurrentTime() + seconds);
+                player.seek(newTime);
+                showCurrentPosition();
+            }
+
+            function addMark(type) {
+                player.pause();
+                isPlaying = false;
+                playPauseButton.textContent = "Play (Space)";
+                const currentTime = player.getCurrentTime();
+                let value = null;
+                if (type === 'm') {
+                    value = prompt("Enter desired interval:", "");
+                    if (value === null) return; // User cancelled
+                }
+                undoStack.push([...marks]);
+                marks.push({ time: currentTime.toFixed(3), value: value, type: type });
+                updateTimestampList();
+                updateTimeline();
+                player.play();
+                isPlaying = true;
+                playPauseButton.textContent = "Pause (Space)";
+            }
+
+            function updateTimestampList() {
+                timestampList.innerHTML = '';
+                marks.sort((a, b) => parseFloat(a.time) - parseFloat(b.time));
+                let currentSegmentStart = null;
+                marks.forEach((mark, index) => {
+                    const item = document.createElement('div');
+                    let displayText = `${mark.time}s (${mark.type})`;
+                    if (mark.value !== null) {
+                        displayText += ` - ${mark.value}s`;
+                    }
+                    if (mark.type === 'i') {
+                        currentSegmentStart = parseFloat(mark.time);
+                    } else if (mark.type === 'o' && currentSegmentStart !== null) {
+                        const duration = (parseFloat(mark.time) - currentSegmentStart).toFixed(3);
+                        displayText += ` [Duration: ${duration}s]`;
+                        currentSegmentStart = null;
+                    }
+                    item.textContent = displayText;
+                    item.addEventListener('click', () => {
+                        showActionDialog(mark, index, displayText);
+                    });
+                    timestampList.appendChild(item);
+                });
+            }
+
+            function showActionDialog(mark, index, displayText) {
+                // Create a modal dialog
+                const modal = document.createElement('div');
+                modal.style.position = 'fixed';
+                modal.style.left = '50%';
+                modal.style.top = '50%';
+                modal.style.transform = 'translate(-50%, -50%)';
+                modal.style.backgroundColor = 'white';
+                modal.style.padding = '20px';
+                modal.style.border = '1px solid black';
+                modal.style.zIndex = '1000';
+
+                const message = document.createElement('p');
+                message.textContent = `Choose an action for this timestamp:\n${displayText}`;
+                modal.appendChild(message);
+
+                const createButton = (text, action) => {
+                    const button = document.createElement('button');
+                    button.textContent = text;
+                    button.addEventListener('click', () => {
+                        action();
+                        document.body.removeChild(modal);
+                    });
+                    return button;
+                };
+
+                const gotoButton = createButton('Go to', () => {
+                    player.seek(parseFloat(mark.time));
+                    showCurrentPosition();
+                });
+
+                const deleteButton = createButton('Delete', () => {
+                    if (confirm(`Are you sure you want to delete this mark?\n${displayText}`)) {
+                        undoStack.push([...marks]);
+                        marks.splice(index, 1);
+                        updateTimestampList();
+                        updateTimeline();
+                    }
+                });
+
+                const cancelButton = createButton('Cancel', () => {
+                    // Do nothing, just close the modal
+                });
+
+                modal.appendChild(gotoButton);
+                modal.appendChild(deleteButton);
+                modal.appendChild(cancelButton);
+
+                document.body.appendChild(modal);
+            }
+
+            function updateTimeline() {
+                timeline.innerHTML = '';
+                const duration = player.getDuration();
+                marks.forEach((mark, index) => {
+                    if (mark.type === 'i' && index < marks.length - 1 && marks[index + 1].type === 'o') {
+                        const segment = document.createElement('div');
+                        segment.className = 'segment';
+                        const start = (parseFloat(mark.time) / duration) * 100;
+                        const end = (parseFloat(marks[index + 1].time) / duration) * 100;
+                        segment.style.left = `${start}%`;
+                        segment.style.width = `${end - start}%`;
+                        timeline.appendChild(segment);
+                    }
+                });
+            }
+
+            function undo() {
+                if (undoStack.length > 0) {
+                    marks = undoStack.pop();
+                    updateTimestampList();
+                    updateTimeline();
+                }
+            }
+
+            function exportMarks() {
+                let csvContent = "type,start_time,end_time,duration,value\n";
+                for (let i = 0; i < marks.length; i++) {
+                    const mark = marks[i];
+                    let line = `${mark.type},${mark.time},`;
+                    if (mark.type === 'i' && i < marks.length - 1 && marks[i + 1].type === 'o') {
+                        const duration = (parseFloat(marks[i + 1].time) - parseFloat(mark.time)).toFixed(3);
+                        line += `${marks[i + 1].time},${duration},`;
+                    } else if (mark.type === 'o') {
+                        line += `,,`;
+                    } else {
+                        line += `,,${mark.value || ''}`;
+                    }
+                    csvContent += line + "\n";
+                }
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'timecodes.csv';
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+
+            playPauseButton.addEventListener('click', togglePlayPause);
+            forwardButton.addEventListener('click', () => seekRelative(2));
+            backwardButton.addEventListener('click', () => seekRelative(-2));
+            smallForwardButton.addEventListener('click', () => seekRelative(0.2));
+            smallBackwardButton.addEventListener('click', () => seekRelative(-0.2));
+            inButton.addEventListener('click', () => addMark('i'));
+            outButton.addEventListener('click', () => addMark('o'));
+            markButton.addEventListener('click', () => addMark('m'));
+            undoButton.addEventListener('click', undo);
+            exportButton.addEventListener('click', exportMarks);
+
+            document.addEventListener('keydown', function (event) {
+                if (event.ctrlKey && event.key.toLowerCase() === 'z') {
+                    event.preventDefault();
+                    undo();
+                } else {
+                    switch (event.key.toLowerCase()) {
+                        case ' ':
+                            event.preventDefault();
+                            togglePlayPause();
+                            break;
+                        case 'f': seekRelative(2); break;
+                        case 'b': seekRelative(-2); break;
+                        case '[': seekRelative(-0.2); break;
+                        case ']': seekRelative(0.2); break;
+                        case 'i': addMark('i'); break;
+                        case 'o': addMark('o'); break;
+                        case 'm': addMark('m'); break;
+                    }
+                }
+            });
+
+            updateTimeline();
+        };
+    </script>
+</body>
+
+</html>

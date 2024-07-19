@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asciinema Player</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css">
     <style>
         .container {
             display: flex;
             width: 90vw;
             margin: 0 auto;
         }
+
         .player-wrapper {
             width: 70%;
         }
+
         .timestamp-list {
             width: 30%;
             height: 400px;
@@ -22,12 +26,15 @@
             padding: 10px;
             margin-left: 20px;
         }
+
         .controls {
             margin-top: 10px;
         }
+
         .controls button {
             margin-right: 5px;
         }
+
         #current-position {
             margin-top: 10px;
         }
@@ -36,6 +43,7 @@
         const castFile = 'your-recording.cast';
     </script>
 </head>
+
 <body>
     <div class="container">
         <div class="player-wrapper">
@@ -47,7 +55,8 @@
                 <button id="small-backward-button">Back 0.2s ([)</button>
                 <button id="small-forward-button">Forward 0.2s (])</button>
                 <button id="mark-button" accesskey="m">Mark (M)</button>
-                <button id="delete-button">Delete Last (Delete)</button>
+                <button id="in-button">In (I)</button>
+                <button id="out-button">Out (O)</button>
                 <button id="export-button">Export Marks</button>
             </div>
             <div id="current-position"></div>
@@ -56,12 +65,13 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.min.js"></script>
+
     <script>
         let player;
         let isPlaying = true;
         let marks = [];
-        
-        window.onload = function() {
+
+        window.onload = function () {
             player = AsciinemaPlayer.create(castFile, document.getElementById('player-container'), {
                 cols: 80,
                 rows: 24
@@ -73,10 +83,11 @@
             const smallForwardButton = document.getElementById('small-forward-button');
             const smallBackwardButton = document.getElementById('small-backward-button');
             const markButton = document.getElementById('mark-button');
-            const deleteButton = document.getElementById('delete-button');
             const exportButton = document.getElementById('export-button');
             const currentPositionDiv = document.getElementById('current-position');
             const timestampList = document.getElementById('timestamp-list');
+            const inButton = document.getElementById('in-button');
+            const outButton = document.getElementById('out-button');
 
             function showCurrentPosition() {
                 const currentTime = player.getCurrentTime();
@@ -107,7 +118,7 @@
                 const currentTime = player.getCurrentTime();
                 const duration = prompt("Enter desired duration:", "");
                 if (duration !== null) {
-                    marks.push({time: currentTime.toFixed(3), value: duration, type: 'm'});
+                    marks.push({ time: currentTime.toFixed(3), value: duration, type: 'm' });
                     updateTimestampList();
                 }
                 player.play();
@@ -120,23 +131,30 @@
                 updateTimestampList();
             }
 
-            function deleteLastMark() {
-                if (marks.length > 0) {
-                    marks.pop();
-                    updateTimestampList();
-                }
+            function addTimestamp(type) {
+                player.pause();
+                isPlaying = false;
+                playPauseButton.textContent = "Play (P)";
+                const currentTime = player.getCurrentTime();
+                marks.push({ time: currentTime.toFixed(3), value: null, type: type });
+                updateTimestampList();
+                player.play();
+                isPlaying = true;
+                playPauseButton.textContent = "Pause (P)";
             }
 
             function updateTimestampList() {
                 timestampList.innerHTML = '';
+                marks.sort((a, b) => parseFloat(a.time) - parseFloat(b.time));
                 marks.forEach((mark, index) => {
                     const item = document.createElement('div');
-                    item.textContent = `${mark.time}s - ${mark.value}`;
+                    const valueDisplay = mark.value === null ? '' : ` - ${mark.value}`;
+                    item.textContent = `${mark.time}s${valueDisplay} (${mark.type})`;
                     item.addEventListener('click', () => {
                         player.pause();
                         isPlaying = false;
                         playPauseButton.textContent = "Play (P)";
-                        if (confirm("Delete this timestamp?")) {
+                        if (confirm(`Delete this timestamp?\n${item.textContent}`)) {
                             deleteMark(index);
                         }
                         player.play();
@@ -150,9 +168,10 @@
             function exportMarks() {
                 let csvContent = "time,value,type\n";
                 marks.forEach(mark => {
-                    csvContent += `${mark.time},${mark.value},${mark.type}\n`;
+                    const value = mark.value === null ? '' : mark.value;
+                    csvContent += `${mark.time},${value},${mark.type}\n`;
                 });
-                const blob = new Blob([csvContent], {type: 'text/csv'});
+                const blob = new Blob([csvContent], { type: 'text/csv' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
@@ -167,21 +186,24 @@
             smallForwardButton.addEventListener('click', () => seekRelative(0.2));
             smallBackwardButton.addEventListener('click', () => seekRelative(-0.2));
             markButton.addEventListener('click', addMark);
-            deleteButton.addEventListener('click', deleteLastMark);
             exportButton.addEventListener('click', exportMarks);
+            inButton.addEventListener('click', () => addTimestamp('i'));
+            outButton.addEventListener('click', () => addTimestamp('o'));
 
-            document.addEventListener('keydown', function(event) {
-                switch(event.key.toLowerCase()) {
+            document.addEventListener('keydown', function (event) {
+                switch (event.key.toLowerCase()) {
                     case 'p': togglePlayPause(); break;
                     case 'f': seekRelative(2); break;
                     case 'b': seekRelative(-2); break;
                     case '[': seekRelative(-0.2); break;
                     case ']': seekRelative(0.2); break;
                     case 'm': addMark(); break;
-                    case 'delete': deleteLastMark(); break;
+                    case 'i': addTimestamp('i'); break;
+                    case 'o': addTimestamp('o'); break;
                 }
             });
         };
     </script>
 </body>
+
 </html>
