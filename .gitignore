@@ -10,3 +10,4 @@ asciinema2mp4/outfile.mp4
 .version
 __pycache__
 *.pyc
+.env
