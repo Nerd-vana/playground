@@ -9,29 +9,57 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.exceptions import SpotifyException
 import os
+import time
+from flask import Flask, request, redirect
+import threading
 
-def setup_spotify():
+app = Flask(__name__)
+auth_code = None
+
+@app.route('/callback')
+def callback():
+    global auth_code
+    auth_code = request.args.get('code')
+    return "Authorization code received. You can close this window now."
+
+def get_spotify_client():
     sp_oauth = SpotifyOAuth(
         client_id=os.getenv("SPOTIPY_CLIENT_ID"),
         client_secret=os.getenv("SPOTIPY_CLIENT_SECRET"),
         redirect_uri="http://localhost:8888/callback",
         scope="playlist-modify-public playlist-modify-private"
     )
-
+    
     token_info = sp_oauth.get_cached_token()
 
     if not token_info:
         auth_url = sp_oauth.get_authorize_url()
         print(f'Please go to this URL and authorize the app: {auth_url}')
-        response = input('Enter the URL you were redirected to: ')
-        code = sp_oauth.parse_response_code(response)
-        token_info = sp_oauth.get_access_token(code)
 
-    if token_info:
-        return spotipy.Spotify(auth=token_info['access_token'])
-    else:
+        # Start Flask server to capture the callback
+        threading.Thread(target=lambda: app.run(port=8888)).start()
+
+        while not auth_code:
+            time.sleep(1)
+
+        token_info = sp_oauth.get_access_token(auth_code)
+
+    return sp_oauth, token_info
+
+def refresh_token_if_needed(sp_oauth, token_info):
+    if token_info and time.time() > token_info['expires_at']:
+        token_info = sp_oauth.refresh_access_token(token_info['refresh_token'])
+    return token_info
+
+def setup_spotify():
+    sp_oauth, token_info = get_spotify_client()
+
+    if not token_info:
         print("Error: Couldn't get access token. Please check your credentials and try again.")
         return None
+
+    token_info = refresh_token_if_needed(sp_oauth, token_info)
+    return spotipy.Spotify(auth=token_info['access_token']), sp_oauth, token_info
 
 def format_duration(duration_ms):
     minutes = duration_ms // 60000
@@ -44,30 +72,21 @@ def display_track_metadata(track, index):
     print(f"   Duration: {format_duration(track['duration_ms'])}    Popularity: {track['popularity']}")
     print("-" * 40)
 
-
 def search_and_add_songs(sp, song_name, singer, playlist_id):
-    # Construct search query
     query = f"track:{song_name}"
     if singer:
         query += f" artist:{singer}"
 
-    # Search for the songs
-    results = sp.search(q=query, type="track", limit=10)  # Increase limit to get more results
+    results = sp.search(q=query, type="track", limit=10)
     
     if results['tracks']['items']:
         tracks = results['tracks']['items']
-        
-        # Sort results by popularity, then by release date
         tracks.sort(key=lambda x: (x['popularity'], x['album']['release_date']), reverse=True)
-        
-        # Limit to 5 results
         tracks = tracks[:7]
         
-        # Display the sorted tracks with indices
         for index, track in enumerate(tracks, start=1):
             display_track_metadata(track, index)
         
-        # Prompt user to choose which songs to add
         selected_indices = input("Enter the numbers of the songs you want to add, separated by commas: ").strip()
         if not selected_indices:
             print("No songs selected. Exiting.")
@@ -86,7 +105,6 @@ def search_and_add_songs(sp, song_name, singer, playlist_id):
         track_uris = [tracks[index - 1]['uri'] for index in selected_indices]
 
         try:
-            # Add the selected songs to the playlist
             sp.playlist_add_items(playlist_id, track_uris)
             for index in selected_indices:
                 item = tracks[index - 1]
@@ -97,7 +115,6 @@ def search_and_add_songs(sp, song_name, singer, playlist_id):
             print("Make sure you're using the correct playlist ID and that you have permission to modify this playlist.")
     else:
         print(f"No songs found for '{song_name}'{' by ' + singer if singer else ''}.")
-
 
 def record_audio(filename="/tmp/output.wav", duration=10, sample_rate=44100):
     p = pyaudio.PyAudio()
@@ -117,7 +134,6 @@ def record_audio(filename="/tmp/output.wav", duration=10, sample_rate=44100):
     stream.close()
     p.terminate()
 
-    # Save as WAV file
     wf = wave.open(filename, 'wb')
     wf.setnchannels(1)
     wf.setsampwidth(p.get_sample_size(pyaudio.paInt16))
@@ -143,11 +159,9 @@ def main():
         if 'track' in result[1]:
             track = result[1]['track']
             print(f"   Name: {track['title']} / {track['subtitle']}")
-            #print(f"Artist: {track['subtitle']}")
-            #print(f"Genre: {track.get('genre', 'N/A')}")
             print("=" * 40)
 
-            sp = setup_spotify()
+            sp, sp_oauth, token_info = setup_spotify()
             if sp:
                 playlist_id = os.getenv("SPOTIPY_PLAYLIST_ID")
                 search_and_add_songs(sp, track['title'], track['subtitle'], playlist_id)
