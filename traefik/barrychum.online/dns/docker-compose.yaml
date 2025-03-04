@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  dnsmasq:
+    image: drpsychick/dnsmasq:latest
+    container_name: dnsmasq
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    environment:
+      - DNSMASQ_OPTS=--log-facility=-
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+    
