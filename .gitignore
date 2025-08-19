@@ -13,3 +13,4 @@ __pycache__
 .env
 .cache
 spotify/.cache
+.DS_Store
